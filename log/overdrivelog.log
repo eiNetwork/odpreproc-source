@@ -1,0 +1,961 @@
+141120 11:16:45:607 [main] DEBUG ExternalFormatTable  >> 42128 inserted into externalformats
+141120 11:16:45:607 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:45:608 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42129",formatLink = "link",dateAdded = "1416500205607",dateUpdated = "0"
+141120 11:16:45:608 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:608 [main] DEBUG ExternalFormatTable  >> 42129 inserted into externalformats
+141120 11:16:45:608 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:45:608 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42129",formatLink = "link",dateAdded = "1416500205608",dateUpdated = "0"
+141120 11:16:45:608 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:608 [main] DEBUG ExternalFormatTable  >> 42129 inserted into externalformats
+141120 11:16:45:608 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:45:609 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42129",formatLink = "link",dateAdded = "1416500205608",dateUpdated = "0"
+141120 11:16:45:609 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:609 [main] DEBUG ExternalFormatTable  >> 42129 inserted into externalformats
+141120 11:16:45:609 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:45:610 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42130",formatLink = "link",dateAdded = "1416500205609",dateUpdated = "0"
+141120 11:16:45:610 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:610 [main] DEBUG ExternalFormatTable  >> 42130 inserted into externalformats
+141120 11:16:45:610 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:45:610 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42130",formatLink = "link",dateAdded = "1416500205610",dateUpdated = "0"
+141120 11:16:45:610 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:610 [main] DEBUG ExternalFormatTable  >> 42130 inserted into externalformats
+141120 11:16:45:610 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:45:611 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42130",formatLink = "link",dateAdded = "1416500205610",dateUpdated = "0"
+141120 11:16:45:611 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:611 [main] DEBUG ExternalFormatTable  >> 42130 inserted into externalformats
+141120 11:16:45:611 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:45:611 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42131",formatLink = "link",dateAdded = "1416500205611",dateUpdated = "0"
+141120 11:16:45:611 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:612 [main] DEBUG ExternalFormatTable  >> 42131 inserted into externalformats
+141120 11:16:45:612 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:45:612 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42131",formatLink = "link",dateAdded = "1416500205612",dateUpdated = "0"
+141120 11:16:45:612 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:612 [main] DEBUG ExternalFormatTable  >> 42131 inserted into externalformats
+141120 11:16:45:612 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:45:612 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42131",formatLink = "link",dateAdded = "1416500205612",dateUpdated = "0"
+141120 11:16:45:612 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:612 [main] DEBUG ExternalFormatTable  >> 42131 inserted into externalformats
+141120 11:16:45:613 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:16:45:613 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42132",formatLink = "link",dateAdded = "1416500205613",dateUpdated = "0"
+141120 11:16:45:613 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:613 [main] DEBUG ExternalFormatTable  >> 42132 inserted into externalformats
+141120 11:16:45:614 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:45:614 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42133",formatLink = "link",dateAdded = "1416500205614",dateUpdated = "0"
+141120 11:16:45:614 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:614 [main] DEBUG ExternalFormatTable  >> 42133 inserted into externalformats
+141120 11:16:45:614 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:45:615 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42133",formatLink = "link",dateAdded = "1416500205615",dateUpdated = "0"
+141120 11:16:45:615 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:615 [main] DEBUG ExternalFormatTable  >> 42133 inserted into externalformats
+141120 11:16:45:615 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:45:615 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42133",formatLink = "link",dateAdded = "1416500205615",dateUpdated = "0"
+141120 11:16:45:615 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:615 [main] DEBUG ExternalFormatTable  >> 42133 inserted into externalformats
+141120 11:16:45:615 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:45:616 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42133",formatLink = "link",dateAdded = "1416500205616",dateUpdated = "0"
+141120 11:16:45:616 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:616 [main] DEBUG ExternalFormatTable  >> 42133 inserted into externalformats
+141120 11:16:45:616 [main] DEBUG ExternalFormatTable  >> 0 Format video-wmv
+141120 11:16:45:616 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "7",externalDataId = "42134",formatLink = "link",dateAdded = "1416500205616",dateUpdated = "0"
+141120 11:16:45:616 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:45:617 [main] DEBUG ExternalFormatTable  >> 42134 inserted into externalformats
+141120 11:16:53:043 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:044 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42135",formatLink = "link",dateAdded = "1416500213043",dateUpdated = "0"
+141120 11:16:53:044 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:044 [main] DEBUG ExternalFormatTable  >> 42135 inserted into externalformats
+141120 11:16:53:044 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:044 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42135",formatLink = "link",dateAdded = "1416500213044",dateUpdated = "0"
+141120 11:16:53:044 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:044 [main] DEBUG ExternalFormatTable  >> 42135 inserted into externalformats
+141120 11:16:53:044 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:045 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42135",formatLink = "link",dateAdded = "1416500213045",dateUpdated = "0"
+141120 11:16:53:045 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:045 [main] DEBUG ExternalFormatTable  >> 42135 inserted into externalformats
+141120 11:16:53:045 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:046 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42136",formatLink = "link",dateAdded = "1416500213045",dateUpdated = "0"
+141120 11:16:53:046 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:046 [main] DEBUG ExternalFormatTable  >> 42136 inserted into externalformats
+141120 11:16:53:046 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:046 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42136",formatLink = "link",dateAdded = "1416500213046",dateUpdated = "0"
+141120 11:16:53:046 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:046 [main] DEBUG ExternalFormatTable  >> 42136 inserted into externalformats
+141120 11:16:53:047 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:047 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42137",formatLink = "link",dateAdded = "1416500213047",dateUpdated = "0"
+141120 11:16:53:047 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:047 [main] DEBUG ExternalFormatTable  >> 42137 inserted into externalformats
+141120 11:16:53:048 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:048 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42137",formatLink = "link",dateAdded = "1416500213048",dateUpdated = "0"
+141120 11:16:53:048 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:048 [main] DEBUG ExternalFormatTable  >> 42137 inserted into externalformats
+141120 11:16:53:048 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:048 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42137",formatLink = "link",dateAdded = "1416500213048",dateUpdated = "0"
+141120 11:16:53:048 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:049 [main] DEBUG ExternalFormatTable  >> 42137 inserted into externalformats
+141120 11:16:53:049 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:050 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42138",formatLink = "link",dateAdded = "1416500213049",dateUpdated = "0"
+141120 11:16:53:050 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:050 [main] DEBUG ExternalFormatTable  >> 42138 inserted into externalformats
+141120 11:16:53:050 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:050 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42138",formatLink = "link",dateAdded = "1416500213050",dateUpdated = "0"
+141120 11:16:53:050 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:050 [main] DEBUG ExternalFormatTable  >> 42138 inserted into externalformats
+141120 11:16:53:050 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:051 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42138",formatLink = "link",dateAdded = "1416500213051",dateUpdated = "0"
+141120 11:16:53:051 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:051 [main] DEBUG ExternalFormatTable  >> 42138 inserted into externalformats
+141120 11:16:53:051 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:051 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42138",formatLink = "link",dateAdded = "1416500213051",dateUpdated = "0"
+141120 11:16:53:051 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:051 [main] DEBUG ExternalFormatTable  >> 42138 inserted into externalformats
+141120 11:16:53:052 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:052 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42139",formatLink = "link",dateAdded = "1416500213052",dateUpdated = "0"
+141120 11:16:53:052 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:052 [main] DEBUG ExternalFormatTable  >> 42139 inserted into externalformats
+141120 11:16:53:052 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:053 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42139",formatLink = "link",dateAdded = "1416500213053",dateUpdated = "0"
+141120 11:16:53:053 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:053 [main] DEBUG ExternalFormatTable  >> 42139 inserted into externalformats
+141120 11:16:53:053 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:053 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42139",formatLink = "link",dateAdded = "1416500213053",dateUpdated = "0"
+141120 11:16:53:053 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:053 [main] DEBUG ExternalFormatTable  >> 42139 inserted into externalformats
+141120 11:16:53:053 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:054 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42139",formatLink = "link",dateAdded = "1416500213054",dateUpdated = "0"
+141120 11:16:53:054 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:054 [main] DEBUG ExternalFormatTable  >> 42139 inserted into externalformats
+141120 11:16:53:054 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:055 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42140",formatLink = "link",dateAdded = "1416500213054",dateUpdated = "0"
+141120 11:16:53:055 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:055 [main] DEBUG ExternalFormatTable  >> 42140 inserted into externalformats
+141120 11:16:53:055 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:055 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42140",formatLink = "link",dateAdded = "1416500213055",dateUpdated = "0"
+141120 11:16:53:055 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:055 [main] DEBUG ExternalFormatTable  >> 42140 inserted into externalformats
+141120 11:16:53:055 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:056 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42140",formatLink = "link",dateAdded = "1416500213055",dateUpdated = "0"
+141120 11:16:53:056 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:056 [main] DEBUG ExternalFormatTable  >> 42140 inserted into externalformats
+141120 11:16:53:056 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:057 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42141",formatLink = "link",dateAdded = "1416500213057",dateUpdated = "0"
+141120 11:16:53:057 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:057 [main] DEBUG ExternalFormatTable  >> 42141 inserted into externalformats
+141120 11:16:53:057 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:057 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42141",formatLink = "link",dateAdded = "1416500213057",dateUpdated = "0"
+141120 11:16:53:057 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:057 [main] DEBUG ExternalFormatTable  >> 42141 inserted into externalformats
+141120 11:16:53:057 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:058 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42141",formatLink = "link",dateAdded = "1416500213057",dateUpdated = "0"
+141120 11:16:53:058 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:058 [main] DEBUG ExternalFormatTable  >> 42141 inserted into externalformats
+141120 11:16:53:058 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:058 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42141",formatLink = "link",dateAdded = "1416500213058",dateUpdated = "0"
+141120 11:16:53:058 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:058 [main] DEBUG ExternalFormatTable  >> 42141 inserted into externalformats
+141120 11:16:53:059 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:060 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42142",formatLink = "link",dateAdded = "1416500213059",dateUpdated = "0"
+141120 11:16:53:060 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:060 [main] DEBUG ExternalFormatTable  >> 42142 inserted into externalformats
+141120 11:16:53:060 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:060 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42142",formatLink = "link",dateAdded = "1416500213060",dateUpdated = "0"
+141120 11:16:53:060 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:060 [main] DEBUG ExternalFormatTable  >> 42142 inserted into externalformats
+141120 11:16:53:060 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:061 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42142",formatLink = "link",dateAdded = "1416500213060",dateUpdated = "0"
+141120 11:16:53:061 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:061 [main] DEBUG ExternalFormatTable  >> 42142 inserted into externalformats
+141120 11:16:53:061 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:061 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42142",formatLink = "link",dateAdded = "1416500213061",dateUpdated = "0"
+141120 11:16:53:061 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:061 [main] DEBUG ExternalFormatTable  >> 42142 inserted into externalformats
+141120 11:16:53:062 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:062 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42143",formatLink = "link",dateAdded = "1416500213062",dateUpdated = "0"
+141120 11:16:53:062 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:062 [main] DEBUG ExternalFormatTable  >> 42143 inserted into externalformats
+141120 11:16:53:063 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:063 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42143",formatLink = "link",dateAdded = "1416500213063",dateUpdated = "0"
+141120 11:16:53:063 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:063 [main] DEBUG ExternalFormatTable  >> 42143 inserted into externalformats
+141120 11:16:53:063 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:063 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42143",formatLink = "link",dateAdded = "1416500213063",dateUpdated = "0"
+141120 11:16:53:063 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:063 [main] DEBUG ExternalFormatTable  >> 42143 inserted into externalformats
+141120 11:16:53:064 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:064 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42144",formatLink = "link",dateAdded = "1416500213064",dateUpdated = "0"
+141120 11:16:53:064 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:064 [main] DEBUG ExternalFormatTable  >> 42144 inserted into externalformats
+141120 11:16:53:064 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:065 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42144",formatLink = "link",dateAdded = "1416500213065",dateUpdated = "0"
+141120 11:16:53:065 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:065 [main] DEBUG ExternalFormatTable  >> 42144 inserted into externalformats
+141120 11:16:53:065 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:065 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42144",formatLink = "link",dateAdded = "1416500213065",dateUpdated = "0"
+141120 11:16:53:065 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:066 [main] DEBUG ExternalFormatTable  >> 42144 inserted into externalformats
+141120 11:16:53:066 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:066 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42144",formatLink = "link",dateAdded = "1416500213066",dateUpdated = "0"
+141120 11:16:53:066 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:066 [main] DEBUG ExternalFormatTable  >> 42144 inserted into externalformats
+141120 11:16:53:067 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:067 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42145",formatLink = "link",dateAdded = "1416500213067",dateUpdated = "0"
+141120 11:16:53:067 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:067 [main] DEBUG ExternalFormatTable  >> 42145 inserted into externalformats
+141120 11:16:53:067 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:067 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42145",formatLink = "link",dateAdded = "1416500213067",dateUpdated = "0"
+141120 11:16:53:068 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:068 [main] DEBUG ExternalFormatTable  >> 42145 inserted into externalformats
+141120 11:16:53:068 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:068 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42145",formatLink = "link",dateAdded = "1416500213068",dateUpdated = "0"
+141120 11:16:53:068 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:068 [main] DEBUG ExternalFormatTable  >> 42145 inserted into externalformats
+141120 11:16:53:068 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-overdrive
+141120 11:16:53:069 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42146",formatLink = "link",dateAdded = "1416500213069",dateUpdated = "0"
+141120 11:16:53:069 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:069 [main] DEBUG ExternalFormatTable  >> 42146 inserted into externalformats
+141120 11:16:53:070 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:070 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42147",formatLink = "link",dateAdded = "1416500213070",dateUpdated = "0"
+141120 11:16:53:070 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:070 [main] DEBUG ExternalFormatTable  >> 42147 inserted into externalformats
+141120 11:16:53:070 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:071 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42147",formatLink = "link",dateAdded = "1416500213071",dateUpdated = "0"
+141120 11:16:53:071 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:071 [main] DEBUG ExternalFormatTable  >> 42147 inserted into externalformats
+141120 11:16:53:071 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:071 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42147",formatLink = "link",dateAdded = "1416500213071",dateUpdated = "0"
+141120 11:16:53:072 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:072 [main] DEBUG ExternalFormatTable  >> 42147 inserted into externalformats
+141120 11:16:53:072 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:072 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42148",formatLink = "link",dateAdded = "1416500213072",dateUpdated = "0"
+141120 11:16:53:073 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:073 [main] DEBUG ExternalFormatTable  >> 42148 inserted into externalformats
+141120 11:16:53:073 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:073 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42148",formatLink = "link",dateAdded = "1416500213073",dateUpdated = "0"
+141120 11:16:53:073 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:073 [main] DEBUG ExternalFormatTable  >> 42148 inserted into externalformats
+141120 11:16:53:073 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:074 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42148",formatLink = "link",dateAdded = "1416500213073",dateUpdated = "0"
+141120 11:16:53:074 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:074 [main] DEBUG ExternalFormatTable  >> 42148 inserted into externalformats
+141120 11:16:53:074 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:075 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42149",formatLink = "link",dateAdded = "1416500213075",dateUpdated = "0"
+141120 11:16:53:075 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:075 [main] DEBUG ExternalFormatTable  >> 42149 inserted into externalformats
+141120 11:16:53:075 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:075 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42149",formatLink = "link",dateAdded = "1416500213075",dateUpdated = "0"
+141120 11:16:53:076 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:076 [main] DEBUG ExternalFormatTable  >> 42149 inserted into externalformats
+141120 11:16:53:076 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:076 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42149",formatLink = "link",dateAdded = "1416500213076",dateUpdated = "0"
+141120 11:16:53:076 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:076 [main] DEBUG ExternalFormatTable  >> 42149 inserted into externalformats
+141120 11:16:53:076 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:077 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42149",formatLink = "link",dateAdded = "1416500213076",dateUpdated = "0"
+141120 11:16:53:077 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:077 [main] DEBUG ExternalFormatTable  >> 42149 inserted into externalformats
+141120 11:16:53:077 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:078 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42150",formatLink = "link",dateAdded = "1416500213077",dateUpdated = "0"
+141120 11:16:53:078 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:078 [main] DEBUG ExternalFormatTable  >> 42150 inserted into externalformats
+141120 11:16:53:079 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:079 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42151",formatLink = "link",dateAdded = "1416500213079",dateUpdated = "0"
+141120 11:16:53:079 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:079 [main] DEBUG ExternalFormatTable  >> 42151 inserted into externalformats
+141120 11:16:53:079 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:080 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42151",formatLink = "link",dateAdded = "1416500213080",dateUpdated = "0"
+141120 11:16:53:080 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:080 [main] DEBUG ExternalFormatTable  >> 42151 inserted into externalformats
+141120 11:16:53:080 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:080 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42151",formatLink = "link",dateAdded = "1416500213080",dateUpdated = "0"
+141120 11:16:53:081 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:081 [main] DEBUG ExternalFormatTable  >> 42151 inserted into externalformats
+141120 11:16:53:081 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:081 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42152",formatLink = "link",dateAdded = "1416500213081",dateUpdated = "0"
+141120 11:16:53:082 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:082 [main] DEBUG ExternalFormatTable  >> 42152 inserted into externalformats
+141120 11:16:53:082 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:082 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42152",formatLink = "link",dateAdded = "1416500213082",dateUpdated = "0"
+141120 11:16:53:082 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:082 [main] DEBUG ExternalFormatTable  >> 42152 inserted into externalformats
+141120 11:16:53:082 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:083 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42152",formatLink = "link",dateAdded = "1416500213082",dateUpdated = "0"
+141120 11:16:53:083 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:083 [main] DEBUG ExternalFormatTable  >> 42152 inserted into externalformats
+141120 11:16:53:083 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:084 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42153",formatLink = "link",dateAdded = "1416500213083",dateUpdated = "0"
+141120 11:16:53:084 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:084 [main] DEBUG ExternalFormatTable  >> 42153 inserted into externalformats
+141120 11:16:53:084 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:084 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42153",formatLink = "link",dateAdded = "1416500213084",dateUpdated = "0"
+141120 11:16:53:084 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:084 [main] DEBUG ExternalFormatTable  >> 42153 inserted into externalformats
+141120 11:16:53:084 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:085 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42153",formatLink = "link",dateAdded = "1416500213085",dateUpdated = "0"
+141120 11:16:53:085 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:085 [main] DEBUG ExternalFormatTable  >> 42153 inserted into externalformats
+141120 11:16:53:085 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:16:53:086 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42154",formatLink = "link",dateAdded = "1416500213086",dateUpdated = "0"
+141120 11:16:53:086 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:086 [main] DEBUG ExternalFormatTable  >> 42154 inserted into externalformats
+141120 11:16:53:086 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:087 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42155",formatLink = "link",dateAdded = "1416500213087",dateUpdated = "0"
+141120 11:16:53:087 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:087 [main] DEBUG ExternalFormatTable  >> 42155 inserted into externalformats
+141120 11:16:53:087 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:087 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42155",formatLink = "link",dateAdded = "1416500213087",dateUpdated = "0"
+141120 11:16:53:088 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:088 [main] DEBUG ExternalFormatTable  >> 42155 inserted into externalformats
+141120 11:16:53:088 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:088 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42155",formatLink = "link",dateAdded = "1416500213088",dateUpdated = "0"
+141120 11:16:53:088 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:088 [main] DEBUG ExternalFormatTable  >> 42155 inserted into externalformats
+141120 11:16:53:089 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:089 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42156",formatLink = "link",dateAdded = "1416500213089",dateUpdated = "0"
+141120 11:16:53:089 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:089 [main] DEBUG ExternalFormatTable  >> 42156 inserted into externalformats
+141120 11:16:53:089 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:090 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42156",formatLink = "link",dateAdded = "1416500213089",dateUpdated = "0"
+141120 11:16:53:090 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:090 [main] DEBUG ExternalFormatTable  >> 42156 inserted into externalformats
+141120 11:16:53:090 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:090 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42156",formatLink = "link",dateAdded = "1416500213090",dateUpdated = "0"
+141120 11:16:53:090 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:090 [main] DEBUG ExternalFormatTable  >> 42156 inserted into externalformats
+141120 11:16:53:090 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:091 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42156",formatLink = "link",dateAdded = "1416500213090",dateUpdated = "0"
+141120 11:16:53:091 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:091 [main] DEBUG ExternalFormatTable  >> 42156 inserted into externalformats
+141120 11:16:53:091 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:091 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42157",formatLink = "link",dateAdded = "1416500213091",dateUpdated = "0"
+141120 11:16:53:092 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:092 [main] DEBUG ExternalFormatTable  >> 42157 inserted into externalformats
+141120 11:16:53:092 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-overdrive
+141120 11:16:53:092 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42157",formatLink = "link",dateAdded = "1416500213092",dateUpdated = "0"
+141120 11:16:53:092 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:092 [main] DEBUG ExternalFormatTable  >> 42157 inserted into externalformats
+141120 11:16:53:093 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:093 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42158",formatLink = "link",dateAdded = "1416500213093",dateUpdated = "0"
+141120 11:16:53:093 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:093 [main] DEBUG ExternalFormatTable  >> 42158 inserted into externalformats
+141120 11:16:53:093 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:094 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42158",formatLink = "link",dateAdded = "1416500213093",dateUpdated = "0"
+141120 11:16:53:094 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:094 [main] DEBUG ExternalFormatTable  >> 42158 inserted into externalformats
+141120 11:16:53:094 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:094 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42158",formatLink = "link",dateAdded = "1416500213094",dateUpdated = "0"
+141120 11:16:53:094 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:094 [main] DEBUG ExternalFormatTable  >> 42158 inserted into externalformats
+141120 11:16:53:094 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:095 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42158",formatLink = "link",dateAdded = "1416500213095",dateUpdated = "0"
+141120 11:16:53:095 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:095 [main] DEBUG ExternalFormatTable  >> 42158 inserted into externalformats
+141120 11:16:53:095 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:16:53:096 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42159",formatLink = "link",dateAdded = "1416500213096",dateUpdated = "0"
+141120 11:16:53:096 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:096 [main] DEBUG ExternalFormatTable  >> 42159 inserted into externalformats
+141120 11:16:53:096 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:097 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42160",formatLink = "link",dateAdded = "1416500213097",dateUpdated = "0"
+141120 11:16:53:097 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:097 [main] DEBUG ExternalFormatTable  >> 42160 inserted into externalformats
+141120 11:16:53:097 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:097 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42160",formatLink = "link",dateAdded = "1416500213097",dateUpdated = "0"
+141120 11:16:53:098 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:098 [main] DEBUG ExternalFormatTable  >> 42160 inserted into externalformats
+141120 11:16:53:098 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:098 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42160",formatLink = "link",dateAdded = "1416500213098",dateUpdated = "0"
+141120 11:16:53:098 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:098 [main] DEBUG ExternalFormatTable  >> 42160 inserted into externalformats
+141120 11:16:53:099 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:099 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42161",formatLink = "link",dateAdded = "1416500213099",dateUpdated = "0"
+141120 11:16:53:099 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:099 [main] DEBUG ExternalFormatTable  >> 42161 inserted into externalformats
+141120 11:16:53:099 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:100 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42161",formatLink = "link",dateAdded = "1416500213100",dateUpdated = "0"
+141120 11:16:53:100 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:100 [main] DEBUG ExternalFormatTable  >> 42161 inserted into externalformats
+141120 11:16:53:100 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:100 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42161",formatLink = "link",dateAdded = "1416500213100",dateUpdated = "0"
+141120 11:16:53:100 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:100 [main] DEBUG ExternalFormatTable  >> 42161 inserted into externalformats
+141120 11:16:53:101 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:101 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42162",formatLink = "link",dateAdded = "1416500213101",dateUpdated = "0"
+141120 11:16:53:102 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:102 [main] DEBUG ExternalFormatTable  >> 42162 inserted into externalformats
+141120 11:16:53:102 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:102 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42162",formatLink = "link",dateAdded = "1416500213102",dateUpdated = "0"
+141120 11:16:53:102 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:102 [main] DEBUG ExternalFormatTable  >> 42162 inserted into externalformats
+141120 11:16:53:102 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:103 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42162",formatLink = "link",dateAdded = "1416500213103",dateUpdated = "0"
+141120 11:16:53:103 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:103 [main] DEBUG ExternalFormatTable  >> 42162 inserted into externalformats
+141120 11:16:53:103 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:104 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42163",formatLink = "link",dateAdded = "1416500213104",dateUpdated = "0"
+141120 11:16:53:104 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:104 [main] DEBUG ExternalFormatTable  >> 42163 inserted into externalformats
+141120 11:16:53:104 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:104 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42163",formatLink = "link",dateAdded = "1416500213104",dateUpdated = "0"
+141120 11:16:53:104 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:105 [main] DEBUG ExternalFormatTable  >> 42163 inserted into externalformats
+141120 11:16:53:105 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:105 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42163",formatLink = "link",dateAdded = "1416500213105",dateUpdated = "0"
+141120 11:16:53:105 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:105 [main] DEBUG ExternalFormatTable  >> 42163 inserted into externalformats
+141120 11:16:53:105 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:105 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42163",formatLink = "link",dateAdded = "1416500213105",dateUpdated = "0"
+141120 11:16:53:106 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:106 [main] DEBUG ExternalFormatTable  >> 42163 inserted into externalformats
+141120 11:16:53:106 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:107 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42164",formatLink = "link",dateAdded = "1416500213106",dateUpdated = "0"
+141120 11:16:53:107 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:107 [main] DEBUG ExternalFormatTable  >> 42164 inserted into externalformats
+141120 11:16:53:107 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:107 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42164",formatLink = "link",dateAdded = "1416500213107",dateUpdated = "0"
+141120 11:16:53:107 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:107 [main] DEBUG ExternalFormatTable  >> 42164 inserted into externalformats
+141120 11:16:53:107 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:108 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42164",formatLink = "link",dateAdded = "1416500213108",dateUpdated = "0"
+141120 11:16:53:108 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:108 [main] DEBUG ExternalFormatTable  >> 42164 inserted into externalformats
+141120 11:16:53:108 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:109 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42165",formatLink = "link",dateAdded = "1416500213109",dateUpdated = "0"
+141120 11:16:53:109 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:109 [main] DEBUG ExternalFormatTable  >> 42165 inserted into externalformats
+141120 11:16:53:109 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:109 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42165",formatLink = "link",dateAdded = "1416500213109",dateUpdated = "0"
+141120 11:16:53:110 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:110 [main] DEBUG ExternalFormatTable  >> 42165 inserted into externalformats
+141120 11:16:53:110 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:110 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42165",formatLink = "link",dateAdded = "1416500213110",dateUpdated = "0"
+141120 11:16:53:110 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:110 [main] DEBUG ExternalFormatTable  >> 42165 inserted into externalformats
+141120 11:16:53:110 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:111 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42165",formatLink = "link",dateAdded = "1416500213110",dateUpdated = "0"
+141120 11:16:53:111 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:111 [main] DEBUG ExternalFormatTable  >> 42165 inserted into externalformats
+141120 11:16:53:111 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:112 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42166",formatLink = "link",dateAdded = "1416500213111",dateUpdated = "0"
+141120 11:16:53:112 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:112 [main] DEBUG ExternalFormatTable  >> 42166 inserted into externalformats
+141120 11:16:53:112 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:112 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42166",formatLink = "link",dateAdded = "1416500213112",dateUpdated = "0"
+141120 11:16:53:112 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:112 [main] DEBUG ExternalFormatTable  >> 42166 inserted into externalformats
+141120 11:16:53:112 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:113 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42166",formatLink = "link",dateAdded = "1416500213112",dateUpdated = "0"
+141120 11:16:53:113 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:113 [main] DEBUG ExternalFormatTable  >> 42166 inserted into externalformats
+141120 11:16:53:113 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:113 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42166",formatLink = "link",dateAdded = "1416500213113",dateUpdated = "0"
+141120 11:16:53:113 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:113 [main] DEBUG ExternalFormatTable  >> 42166 inserted into externalformats
+141120 11:16:53:114 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:114 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42167",formatLink = "link",dateAdded = "1416500213114",dateUpdated = "0"
+141120 11:16:53:114 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:114 [main] DEBUG ExternalFormatTable  >> 42167 inserted into externalformats
+141120 11:16:53:114 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:115 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42167",formatLink = "link",dateAdded = "1416500213115",dateUpdated = "0"
+141120 11:16:53:115 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:115 [main] DEBUG ExternalFormatTable  >> 42167 inserted into externalformats
+141120 11:16:53:115 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:115 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42167",formatLink = "link",dateAdded = "1416500213115",dateUpdated = "0"
+141120 11:16:53:115 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:115 [main] DEBUG ExternalFormatTable  >> 42167 inserted into externalformats
+141120 11:16:53:116 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:116 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42168",formatLink = "link",dateAdded = "1416500213116",dateUpdated = "0"
+141120 11:16:53:116 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:116 [main] DEBUG ExternalFormatTable  >> 42168 inserted into externalformats
+141120 11:16:53:116 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:117 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42168",formatLink = "link",dateAdded = "1416500213116",dateUpdated = "0"
+141120 11:16:53:117 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:117 [main] DEBUG ExternalFormatTable  >> 42168 inserted into externalformats
+141120 11:16:53:117 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:117 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42168",formatLink = "link",dateAdded = "1416500213117",dateUpdated = "0"
+141120 11:16:53:117 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:117 [main] DEBUG ExternalFormatTable  >> 42168 inserted into externalformats
+141120 11:16:53:118 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:118 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42169",formatLink = "link",dateAdded = "1416500213118",dateUpdated = "0"
+141120 11:16:53:118 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:118 [main] DEBUG ExternalFormatTable  >> 42169 inserted into externalformats
+141120 11:16:53:118 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:119 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42169",formatLink = "link",dateAdded = "1416500213118",dateUpdated = "0"
+141120 11:16:53:119 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:119 [main] DEBUG ExternalFormatTable  >> 42169 inserted into externalformats
+141120 11:16:53:119 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:119 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42169",formatLink = "link",dateAdded = "1416500213119",dateUpdated = "0"
+141120 11:16:53:119 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:119 [main] DEBUG ExternalFormatTable  >> 42169 inserted into externalformats
+141120 11:16:53:119 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:120 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42169",formatLink = "link",dateAdded = "1416500213120",dateUpdated = "0"
+141120 11:16:53:120 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:120 [main] DEBUG ExternalFormatTable  >> 42169 inserted into externalformats
+141120 11:16:53:120 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:16:53:121 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42170",formatLink = "link",dateAdded = "1416500213120",dateUpdated = "0"
+141120 11:16:53:121 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:121 [main] DEBUG ExternalFormatTable  >> 42170 inserted into externalformats
+141120 11:16:53:121 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:16:53:121 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42170",formatLink = "link",dateAdded = "1416500213121",dateUpdated = "0"
+141120 11:16:53:121 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:121 [main] DEBUG ExternalFormatTable  >> 42170 inserted into externalformats
+141120 11:16:53:121 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:16:53:122 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42170",formatLink = "link",dateAdded = "1416500213121",dateUpdated = "0"
+141120 11:16:53:122 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:122 [main] DEBUG ExternalFormatTable  >> 42170 inserted into externalformats
+141120 11:16:53:122 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:16:53:122 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42170",formatLink = "link",dateAdded = "1416500213122",dateUpdated = "0"
+141120 11:16:53:122 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:122 [main] DEBUG ExternalFormatTable  >> 42170 inserted into externalformats
+141120 11:16:53:123 [main] DEBUG ExternalFormatTable  >> 0 Format video-wmv
+141120 11:16:53:123 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "7",externalDataId = "42171",formatLink = "link",dateAdded = "1416500213123",dateUpdated = "0"
+141120 11:16:53:123 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:123 [main] DEBUG ExternalFormatTable  >> 42171 inserted into externalformats
+141120 11:16:53:124 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:124 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42172",formatLink = "link",dateAdded = "1416500213124",dateUpdated = "0"
+141120 11:16:53:124 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:124 [main] DEBUG ExternalFormatTable  >> 42172 inserted into externalformats
+141120 11:16:53:124 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:125 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42172",formatLink = "link",dateAdded = "1416500213125",dateUpdated = "0"
+141120 11:16:53:125 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:125 [main] DEBUG ExternalFormatTable  >> 42172 inserted into externalformats
+141120 11:16:53:125 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:126 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42172",formatLink = "link",dateAdded = "1416500213126",dateUpdated = "0"
+141120 11:16:53:126 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:126 [main] DEBUG ExternalFormatTable  >> 42172 inserted into externalformats
+141120 11:16:53:126 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:127 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42173",formatLink = "link",dateAdded = "1416500213127",dateUpdated = "0"
+141120 11:16:53:127 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:127 [main] DEBUG ExternalFormatTable  >> 42173 inserted into externalformats
+141120 11:16:53:127 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:127 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42173",formatLink = "link",dateAdded = "1416500213127",dateUpdated = "0"
+141120 11:16:53:127 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:127 [main] DEBUG ExternalFormatTable  >> 42173 inserted into externalformats
+141120 11:16:53:128 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:128 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42173",formatLink = "link",dateAdded = "1416500213128",dateUpdated = "0"
+141120 11:16:53:128 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:128 [main] DEBUG ExternalFormatTable  >> 42173 inserted into externalformats
+141120 11:16:53:128 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:129 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42174",formatLink = "link",dateAdded = "1416500213129",dateUpdated = "0"
+141120 11:16:53:129 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:129 [main] DEBUG ExternalFormatTable  >> 42174 inserted into externalformats
+141120 11:16:53:129 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:129 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42174",formatLink = "link",dateAdded = "1416500213129",dateUpdated = "0"
+141120 11:16:53:130 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:130 [main] DEBUG ExternalFormatTable  >> 42174 inserted into externalformats
+141120 11:16:53:130 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:130 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42174",formatLink = "link",dateAdded = "1416500213130",dateUpdated = "0"
+141120 11:16:53:130 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:130 [main] DEBUG ExternalFormatTable  >> 42174 inserted into externalformats
+141120 11:16:53:131 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:131 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42175",formatLink = "link",dateAdded = "1416500213131",dateUpdated = "0"
+141120 11:16:53:131 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:131 [main] DEBUG ExternalFormatTable  >> 42175 inserted into externalformats
+141120 11:16:53:132 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:132 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42175",formatLink = "link",dateAdded = "1416500213132",dateUpdated = "0"
+141120 11:16:53:132 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:132 [main] DEBUG ExternalFormatTable  >> 42175 inserted into externalformats
+141120 11:16:53:132 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:132 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42175",formatLink = "link",dateAdded = "1416500213132",dateUpdated = "0"
+141120 11:16:53:132 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:133 [main] DEBUG ExternalFormatTable  >> 42175 inserted into externalformats
+141120 11:16:53:133 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:133 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42176",formatLink = "link",dateAdded = "1416500213133",dateUpdated = "0"
+141120 11:16:53:133 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:133 [main] DEBUG ExternalFormatTable  >> 42176 inserted into externalformats
+141120 11:16:53:133 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:134 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42176",formatLink = "link",dateAdded = "1416500213134",dateUpdated = "0"
+141120 11:16:53:134 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:134 [main] DEBUG ExternalFormatTable  >> 42176 inserted into externalformats
+141120 11:16:53:134 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:134 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42176",formatLink = "link",dateAdded = "1416500213134",dateUpdated = "0"
+141120 11:16:53:134 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:134 [main] DEBUG ExternalFormatTable  >> 42176 inserted into externalformats
+141120 11:16:53:135 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:16:53:135 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42177",formatLink = "link",dateAdded = "1416500213135",dateUpdated = "0"
+141120 11:16:53:136 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:136 [main] DEBUG ExternalFormatTable  >> 42177 inserted into externalformats
+141120 11:16:53:136 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:16:53:136 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42177",formatLink = "link",dateAdded = "1416500213136",dateUpdated = "0"
+141120 11:16:53:136 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:136 [main] DEBUG ExternalFormatTable  >> 42177 inserted into externalformats
+141120 11:16:53:136 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:16:53:136 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42177",formatLink = "link",dateAdded = "1416500213136",dateUpdated = "0"
+141120 11:16:53:137 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:16:53:137 [main] DEBUG ExternalFormatTable  >> 42177 inserted into externalformats
+141120 11:16:53:137 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:798 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42178",formatLink = "link",dateAdded = "1416500220798",dateUpdated = "0"
+141120 11:17:00:799 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:799 [main] DEBUG ExternalFormatTable  >> 42178 inserted into externalformats
+141120 11:17:00:799 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:799 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42179",formatLink = "link",dateAdded = "1416500220799",dateUpdated = "0"
+141120 11:17:00:800 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:800 [main] DEBUG ExternalFormatTable  >> 42179 inserted into externalformats
+141120 11:17:00:800 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:800 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42180",formatLink = "link",dateAdded = "1416500220800",dateUpdated = "0"
+141120 11:17:00:800 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:801 [main] DEBUG ExternalFormatTable  >> 42180 inserted into externalformats
+141120 11:17:00:801 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:801 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42180",formatLink = "link",dateAdded = "1416500220801",dateUpdated = "0"
+141120 11:17:00:801 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:801 [main] DEBUG ExternalFormatTable  >> 42180 inserted into externalformats
+141120 11:17:00:801 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:801 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42180",formatLink = "link",dateAdded = "1416500220801",dateUpdated = "0"
+141120 11:17:00:802 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:802 [main] DEBUG ExternalFormatTable  >> 42180 inserted into externalformats
+141120 11:17:00:802 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:802 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42181",formatLink = "link",dateAdded = "1416500220802",dateUpdated = "0"
+141120 11:17:00:802 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:803 [main] DEBUG ExternalFormatTable  >> 42181 inserted into externalformats
+141120 11:17:00:803 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:804 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42182",formatLink = "link",dateAdded = "1416500220803",dateUpdated = "0"
+141120 11:17:00:804 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:804 [main] DEBUG ExternalFormatTable  >> 42182 inserted into externalformats
+141120 11:17:00:804 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:804 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42182",formatLink = "link",dateAdded = "1416500220804",dateUpdated = "0"
+141120 11:17:00:804 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:804 [main] DEBUG ExternalFormatTable  >> 42182 inserted into externalformats
+141120 11:17:00:804 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:805 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42182",formatLink = "link",dateAdded = "1416500220805",dateUpdated = "0"
+141120 11:17:00:805 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:805 [main] DEBUG ExternalFormatTable  >> 42182 inserted into externalformats
+141120 11:17:00:805 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:806 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42183",formatLink = "link",dateAdded = "1416500220806",dateUpdated = "0"
+141120 11:17:00:806 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:806 [main] DEBUG ExternalFormatTable  >> 42183 inserted into externalformats
+141120 11:17:00:807 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:807 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42184",formatLink = "link",dateAdded = "1416500220807",dateUpdated = "0"
+141120 11:17:00:807 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:807 [main] DEBUG ExternalFormatTable  >> 42184 inserted into externalformats
+141120 11:17:00:807 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:808 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42185",formatLink = "link",dateAdded = "1416500220808",dateUpdated = "0"
+141120 11:17:00:808 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:808 [main] DEBUG ExternalFormatTable  >> 42185 inserted into externalformats
+141120 11:17:00:808 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:809 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42186",formatLink = "link",dateAdded = "1416500220808",dateUpdated = "0"
+141120 11:17:00:809 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:809 [main] DEBUG ExternalFormatTable  >> 42186 inserted into externalformats
+141120 11:17:00:809 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:809 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42186",formatLink = "link",dateAdded = "1416500220809",dateUpdated = "0"
+141120 11:17:00:809 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:809 [main] DEBUG ExternalFormatTable  >> 42186 inserted into externalformats
+141120 11:17:00:810 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:810 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42187",formatLink = "link",dateAdded = "1416500220810",dateUpdated = "0"
+141120 11:17:00:810 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:810 [main] DEBUG ExternalFormatTable  >> 42187 inserted into externalformats
+141120 11:17:00:810 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:810 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42187",formatLink = "link",dateAdded = "1416500220810",dateUpdated = "0"
+141120 11:17:00:811 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:811 [main] DEBUG ExternalFormatTable  >> 42187 inserted into externalformats
+141120 11:17:00:811 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:811 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42187",formatLink = "link",dateAdded = "1416500220811",dateUpdated = "0"
+141120 11:17:00:811 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:811 [main] DEBUG ExternalFormatTable  >> 42187 inserted into externalformats
+141120 11:17:00:811 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:811 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42187",formatLink = "link",dateAdded = "1416500220811",dateUpdated = "0"
+141120 11:17:00:811 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:811 [main] DEBUG ExternalFormatTable  >> 42187 inserted into externalformats
+141120 11:17:00:812 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:812 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42188",formatLink = "link",dateAdded = "1416500220812",dateUpdated = "0"
+141120 11:17:00:812 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:812 [main] DEBUG ExternalFormatTable  >> 42188 inserted into externalformats
+141120 11:17:00:812 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:813 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42188",formatLink = "link",dateAdded = "1416500220813",dateUpdated = "0"
+141120 11:17:00:813 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:813 [main] DEBUG ExternalFormatTable  >> 42188 inserted into externalformats
+141120 11:17:00:813 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:813 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42188",formatLink = "link",dateAdded = "1416500220813",dateUpdated = "0"
+141120 11:17:00:813 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:813 [main] DEBUG ExternalFormatTable  >> 42188 inserted into externalformats
+141120 11:17:00:813 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:814 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42188",formatLink = "link",dateAdded = "1416500220814",dateUpdated = "0"
+141120 11:17:00:814 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:814 [main] DEBUG ExternalFormatTable  >> 42188 inserted into externalformats
+141120 11:17:00:814 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:815 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42189",formatLink = "link",dateAdded = "1416500220815",dateUpdated = "0"
+141120 11:17:00:815 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:815 [main] DEBUG ExternalFormatTable  >> 42189 inserted into externalformats
+141120 11:17:00:815 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:815 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42189",formatLink = "link",dateAdded = "1416500220815",dateUpdated = "0"
+141120 11:17:00:815 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:815 [main] DEBUG ExternalFormatTable  >> 42189 inserted into externalformats
+141120 11:17:00:815 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:816 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42189",formatLink = "link",dateAdded = "1416500220815",dateUpdated = "0"
+141120 11:17:00:816 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:816 [main] DEBUG ExternalFormatTable  >> 42189 inserted into externalformats
+141120 11:17:00:816 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:816 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42189",formatLink = "link",dateAdded = "1416500220816",dateUpdated = "0"
+141120 11:17:00:816 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:816 [main] DEBUG ExternalFormatTable  >> 42189 inserted into externalformats
+141120 11:17:00:817 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:817 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42190",formatLink = "link",dateAdded = "1416500220817",dateUpdated = "0"
+141120 11:17:00:817 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:817 [main] DEBUG ExternalFormatTable  >> 42190 inserted into externalformats
+141120 11:17:00:817 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-overdrive
+141120 11:17:00:818 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42190",formatLink = "link",dateAdded = "1416500220817",dateUpdated = "0"
+141120 11:17:00:818 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:818 [main] DEBUG ExternalFormatTable  >> 42190 inserted into externalformats
+141120 11:17:00:818 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:819 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42191",formatLink = "link",dateAdded = "1416500220819",dateUpdated = "0"
+141120 11:17:00:819 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:819 [main] DEBUG ExternalFormatTable  >> 42191 inserted into externalformats
+141120 11:17:00:819 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:819 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42191",formatLink = "link",dateAdded = "1416500220819",dateUpdated = "0"
+141120 11:17:00:819 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:819 [main] DEBUG ExternalFormatTable  >> 42191 inserted into externalformats
+141120 11:17:00:819 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:820 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42191",formatLink = "link",dateAdded = "1416500220819",dateUpdated = "0"
+141120 11:17:00:820 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:820 [main] DEBUG ExternalFormatTable  >> 42191 inserted into externalformats
+141120 11:17:00:820 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:820 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42191",formatLink = "link",dateAdded = "1416500220820",dateUpdated = "0"
+141120 11:17:00:820 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:820 [main] DEBUG ExternalFormatTable  >> 42191 inserted into externalformats
+141120 11:17:00:821 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:821 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42192",formatLink = "link",dateAdded = "1416500220821",dateUpdated = "0"
+141120 11:17:00:821 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:821 [main] DEBUG ExternalFormatTable  >> 42192 inserted into externalformats
+141120 11:17:00:821 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:821 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42192",formatLink = "link",dateAdded = "1416500220821",dateUpdated = "0"
+141120 11:17:00:822 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:822 [main] DEBUG ExternalFormatTable  >> 42192 inserted into externalformats
+141120 11:17:00:822 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:822 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42192",formatLink = "link",dateAdded = "1416500220822",dateUpdated = "0"
+141120 11:17:00:822 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:822 [main] DEBUG ExternalFormatTable  >> 42192 inserted into externalformats
+141120 11:17:00:822 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:823 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42193",formatLink = "link",dateAdded = "1416500220823",dateUpdated = "0"
+141120 11:17:00:823 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:823 [main] DEBUG ExternalFormatTable  >> 42193 inserted into externalformats
+141120 11:17:00:823 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:823 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42193",formatLink = "link",dateAdded = "1416500220823",dateUpdated = "0"
+141120 11:17:00:823 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:823 [main] DEBUG ExternalFormatTable  >> 42193 inserted into externalformats
+141120 11:17:00:823 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:824 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42193",formatLink = "link",dateAdded = "1416500220824",dateUpdated = "0"
+141120 11:17:00:824 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:824 [main] DEBUG ExternalFormatTable  >> 42193 inserted into externalformats
+141120 11:17:00:824 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:824 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42193",formatLink = "link",dateAdded = "1416500220824",dateUpdated = "0"
+141120 11:17:00:824 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:824 [main] DEBUG ExternalFormatTable  >> 42193 inserted into externalformats
+141120 11:17:00:825 [main] DEBUG ExternalFormatTable  >> 0 Format video-wmv
+141120 11:17:00:825 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "7",externalDataId = "42194",formatLink = "link",dateAdded = "1416500220825",dateUpdated = "0"
+141120 11:17:00:825 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:825 [main] DEBUG ExternalFormatTable  >> 42194 inserted into externalformats
+141120 11:17:00:826 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-wma
+141120 11:17:00:826 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "4",externalDataId = "42195",formatLink = "link",dateAdded = "1416500220826",dateUpdated = "0"
+141120 11:17:00:826 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:826 [main] DEBUG ExternalFormatTable  >> 42195 inserted into externalformats
+141120 11:17:00:827 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:827 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42196",formatLink = "link",dateAdded = "1416500220827",dateUpdated = "0"
+141120 11:17:00:827 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:827 [main] DEBUG ExternalFormatTable  >> 42196 inserted into externalformats
+141120 11:17:00:827 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:828 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42196",formatLink = "link",dateAdded = "1416500220827",dateUpdated = "0"
+141120 11:17:00:828 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:828 [main] DEBUG ExternalFormatTable  >> 42196 inserted into externalformats
+141120 11:17:00:828 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:828 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42196",formatLink = "link",dateAdded = "1416500220828",dateUpdated = "0"
+141120 11:17:00:828 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:828 [main] DEBUG ExternalFormatTable  >> 42196 inserted into externalformats
+141120 11:17:00:828 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:829 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42197",formatLink = "link",dateAdded = "1416500220829",dateUpdated = "0"
+141120 11:17:00:829 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:829 [main] DEBUG ExternalFormatTable  >> 42197 inserted into externalformats
+141120 11:17:00:830 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:830 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42198",formatLink = "link",dateAdded = "1416500220830",dateUpdated = "0"
+141120 11:17:00:830 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:830 [main] DEBUG ExternalFormatTable  >> 42198 inserted into externalformats
+141120 11:17:00:830 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:830 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42198",formatLink = "link",dateAdded = "1416500220830",dateUpdated = "0"
+141120 11:17:00:830 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:831 [main] DEBUG ExternalFormatTable  >> 42198 inserted into externalformats
+141120 11:17:00:831 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:831 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42198",formatLink = "link",dateAdded = "1416500220831",dateUpdated = "0"
+141120 11:17:00:831 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:831 [main] DEBUG ExternalFormatTable  >> 42198 inserted into externalformats
+141120 11:17:00:832 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:832 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42199",formatLink = "link",dateAdded = "1416500220832",dateUpdated = "0"
+141120 11:17:00:832 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:832 [main] DEBUG ExternalFormatTable  >> 42199 inserted into externalformats
+141120 11:17:00:832 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:833 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42199",formatLink = "link",dateAdded = "1416500220832",dateUpdated = "0"
+141120 11:17:00:833 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:833 [main] DEBUG ExternalFormatTable  >> 42199 inserted into externalformats
+141120 11:17:00:833 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:833 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42199",formatLink = "link",dateAdded = "1416500220833",dateUpdated = "0"
+141120 11:17:00:833 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:833 [main] DEBUG ExternalFormatTable  >> 42199 inserted into externalformats
+141120 11:17:00:834 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:834 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42200",formatLink = "link",dateAdded = "1416500220834",dateUpdated = "0"
+141120 11:17:00:834 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:834 [main] DEBUG ExternalFormatTable  >> 42200 inserted into externalformats
+141120 11:17:00:834 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:835 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42200",formatLink = "link",dateAdded = "1416500220835",dateUpdated = "0"
+141120 11:17:00:835 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:835 [main] DEBUG ExternalFormatTable  >> 42200 inserted into externalformats
+141120 11:17:00:835 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:835 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42200",formatLink = "link",dateAdded = "1416500220835",dateUpdated = "0"
+141120 11:17:00:835 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:835 [main] DEBUG ExternalFormatTable  >> 42200 inserted into externalformats
+141120 11:17:00:835 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:836 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42200",formatLink = "link",dateAdded = "1416500220835",dateUpdated = "0"
+141120 11:17:00:836 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:836 [main] DEBUG ExternalFormatTable  >> 42200 inserted into externalformats
+141120 11:17:00:836 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:837 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42201",formatLink = "link",dateAdded = "1416500220837",dateUpdated = "0"
+141120 11:17:00:837 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:837 [main] DEBUG ExternalFormatTable  >> 42201 inserted into externalformats
+141120 11:17:00:837 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:837 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42201",formatLink = "link",dateAdded = "1416500220837",dateUpdated = "0"
+141120 11:17:00:837 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:837 [main] DEBUG ExternalFormatTable  >> 42201 inserted into externalformats
+141120 11:17:00:838 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:838 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42201",formatLink = "link",dateAdded = "1416500220838",dateUpdated = "0"
+141120 11:17:00:838 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:838 [main] DEBUG ExternalFormatTable  >> 42201 inserted into externalformats
+141120 11:17:00:838 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:839 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42202",formatLink = "link",dateAdded = "1416500220839",dateUpdated = "0"
+141120 11:17:00:839 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:839 [main] DEBUG ExternalFormatTable  >> 42202 inserted into externalformats
+141120 11:17:00:839 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:840 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42203",formatLink = "link",dateAdded = "1416500220840",dateUpdated = "0"
+141120 11:17:00:840 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:840 [main] DEBUG ExternalFormatTable  >> 42203 inserted into externalformats
+141120 11:17:00:841 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:841 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42204",formatLink = "link",dateAdded = "1416500220841",dateUpdated = "0"
+141120 11:17:00:841 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:841 [main] DEBUG ExternalFormatTable  >> 42204 inserted into externalformats
+141120 11:17:00:841 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:842 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42205",formatLink = "link",dateAdded = "1416500220842",dateUpdated = "0"
+141120 11:17:00:842 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:842 [main] DEBUG ExternalFormatTable  >> 42205 inserted into externalformats
+141120 11:17:00:842 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-overdrive
+141120 11:17:00:842 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42205",formatLink = "link",dateAdded = "1416500220842",dateUpdated = "0"
+141120 11:17:00:842 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:842 [main] DEBUG ExternalFormatTable  >> 42205 inserted into externalformats
+141120 11:17:00:843 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:843 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42206",formatLink = "link",dateAdded = "1416500220843",dateUpdated = "0"
+141120 11:17:00:843 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:843 [main] DEBUG ExternalFormatTable  >> 42206 inserted into externalformats
+141120 11:17:00:843 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:844 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42206",formatLink = "link",dateAdded = "1416500220843",dateUpdated = "0"
+141120 11:17:00:844 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:844 [main] DEBUG ExternalFormatTable  >> 42206 inserted into externalformats
+141120 11:17:00:844 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:844 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42206",formatLink = "link",dateAdded = "1416500220844",dateUpdated = "0"
+141120 11:17:00:844 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:844 [main] DEBUG ExternalFormatTable  >> 42206 inserted into externalformats
+141120 11:17:00:845 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:845 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42207",formatLink = "link",dateAdded = "1416500220845",dateUpdated = "0"
+141120 11:17:00:845 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:845 [main] DEBUG ExternalFormatTable  >> 42207 inserted into externalformats
+141120 11:17:00:845 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:846 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42207",formatLink = "link",dateAdded = "1416500220845",dateUpdated = "0"
+141120 11:17:00:846 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:846 [main] DEBUG ExternalFormatTable  >> 42207 inserted into externalformats
+141120 11:17:00:846 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:846 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42207",formatLink = "link",dateAdded = "1416500220846",dateUpdated = "0"
+141120 11:17:00:846 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:846 [main] DEBUG ExternalFormatTable  >> 42207 inserted into externalformats
+141120 11:17:00:847 [main] DEBUG ExternalFormatTable  >> 0 Format video-wmv
+141120 11:17:00:847 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "7",externalDataId = "42208",formatLink = "link",dateAdded = "1416500220847",dateUpdated = "0"
+141120 11:17:00:847 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:847 [main] DEBUG ExternalFormatTable  >> 42208 inserted into externalformats
+141120 11:17:00:848 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:848 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42209",formatLink = "link",dateAdded = "1416500220848",dateUpdated = "0"
+141120 11:17:00:848 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:848 [main] DEBUG ExternalFormatTable  >> 42209 inserted into externalformats
+141120 11:17:00:848 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:848 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42209",formatLink = "link",dateAdded = "1416500220848",dateUpdated = "0"
+141120 11:17:00:849 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:849 [main] DEBUG ExternalFormatTable  >> 42209 inserted into externalformats
+141120 11:17:00:849 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:849 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42209",formatLink = "link",dateAdded = "1416500220849",dateUpdated = "0"
+141120 11:17:00:849 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:849 [main] DEBUG ExternalFormatTable  >> 42209 inserted into externalformats
+141120 11:17:00:849 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:849 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42209",formatLink = "link",dateAdded = "1416500220849",dateUpdated = "0"
+141120 11:17:00:850 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:850 [main] DEBUG ExternalFormatTable  >> 42209 inserted into externalformats
+141120 11:17:00:850 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:850 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42210",formatLink = "link",dateAdded = "1416500220850",dateUpdated = "0"
+141120 11:17:00:851 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:851 [main] DEBUG ExternalFormatTable  >> 42210 inserted into externalformats
+141120 11:17:00:851 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:851 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42211",formatLink = "link",dateAdded = "1416500220851",dateUpdated = "0"
+141120 11:17:00:852 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:852 [main] DEBUG ExternalFormatTable  >> 42211 inserted into externalformats
+141120 11:17:00:852 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:852 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42211",formatLink = "link",dateAdded = "1416500220852",dateUpdated = "0"
+141120 11:17:00:852 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:852 [main] DEBUG ExternalFormatTable  >> 42211 inserted into externalformats
+141120 11:17:00:852 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:852 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42211",formatLink = "link",dateAdded = "1416500220852",dateUpdated = "0"
+141120 11:17:00:853 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:853 [main] DEBUG ExternalFormatTable  >> 42211 inserted into externalformats
+141120 11:17:00:854 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:854 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42212",formatLink = "link",dateAdded = "1416500220854",dateUpdated = "0"
+141120 11:17:00:854 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:854 [main] DEBUG ExternalFormatTable  >> 42212 inserted into externalformats
+141120 11:17:00:854 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:854 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42212",formatLink = "link",dateAdded = "1416500220854",dateUpdated = "0"
+141120 11:17:00:855 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:855 [main] DEBUG ExternalFormatTable  >> 42212 inserted into externalformats
+141120 11:17:00:855 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:855 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42212",formatLink = "link",dateAdded = "1416500220855",dateUpdated = "0"
+141120 11:17:00:855 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:855 [main] DEBUG ExternalFormatTable  >> 42212 inserted into externalformats
+141120 11:17:00:856 [main] DEBUG ExternalFormatTable  >> 0 Format audiobook-mp3
+141120 11:17:00:856 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "5",externalDataId = "42213",formatLink = "link",dateAdded = "1416500220856",dateUpdated = "0"
+141120 11:17:00:856 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:856 [main] DEBUG ExternalFormatTable  >> 42213 inserted into externalformats
+141120 11:17:00:856 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:857 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42214",formatLink = "link",dateAdded = "1416500220857",dateUpdated = "0"
+141120 11:17:00:857 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:857 [main] DEBUG ExternalFormatTable  >> 42214 inserted into externalformats
+141120 11:17:00:857 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:857 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42214",formatLink = "link",dateAdded = "1416500220857",dateUpdated = "0"
+141120 11:17:00:857 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:857 [main] DEBUG ExternalFormatTable  >> 42214 inserted into externalformats
+141120 11:17:00:858 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:858 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42214",formatLink = "link",dateAdded = "1416500220858",dateUpdated = "0"
+141120 11:17:00:858 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:858 [main] DEBUG ExternalFormatTable  >> 42214 inserted into externalformats
+141120 11:17:00:858 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:859 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42215",formatLink = "link",dateAdded = "1416500220859",dateUpdated = "0"
+141120 11:17:00:859 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:859 [main] DEBUG ExternalFormatTable  >> 42215 inserted into externalformats
+141120 11:17:00:859 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:859 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42215",formatLink = "link",dateAdded = "1416500220859",dateUpdated = "0"
+141120 11:17:00:859 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:859 [main] DEBUG ExternalFormatTable  >> 42215 inserted into externalformats
+141120 11:17:00:859 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:860 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42215",formatLink = "link",dateAdded = "1416500220860",dateUpdated = "0"
+141120 11:17:00:860 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:860 [main] DEBUG ExternalFormatTable  >> 42215 inserted into externalformats
+141120 11:17:00:860 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-pdf-adobe
+141120 11:17:00:861 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "8",externalDataId = "42216",formatLink = "link",dateAdded = "1416500220861",dateUpdated = "0"
+141120 11:17:00:861 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:861 [main] DEBUG ExternalFormatTable  >> 42216 inserted into externalformats
+141120 11:17:00:861 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-epub-adobe
+141120 11:17:00:861 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42216",formatLink = "link",dateAdded = "1416500220861",dateUpdated = "0"
+141120 11:17:00:861 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:861 [main] DEBUG ExternalFormatTable  >> 42216 inserted into externalformats
+141120 11:17:00:861 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-kindle
+141120 11:17:00:862 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42216",formatLink = "link",dateAdded = "1416500220862",dateUpdated = "0"
+141120 11:17:00:862 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:862 [main] DEBUG ExternalFormatTable  >> 42216 inserted into externalformats
+141120 11:17:00:862 [main] DEBUG ExternalFormatTable  >> 3 Format ebook-overdrive
+141120 11:17:00:862 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42216",formatLink = "link",dateAdded = "1416500220862",dateUpdated = "0"
+141120 11:17:00:862 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:862 [main] DEBUG ExternalFormatTable  >> 42216 inserted into externalformats
+141120 11:17:00:863 [main] DEBUG ExternalFormatTable  >> 0 Format ebook-epub-adobe
+141120 11:17:00:863 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "1",externalDataId = "42217",formatLink = "link",dateAdded = "1416500220863",dateUpdated = "0"
+141120 11:17:00:863 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:863 [main] DEBUG ExternalFormatTable  >> 42217 inserted into externalformats
+141120 11:17:00:863 [main] DEBUG ExternalFormatTable  >> 1 Format ebook-kindle
+141120 11:17:00:864 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "2",externalDataId = "42217",formatLink = "link",dateAdded = "1416500220863",dateUpdated = "0"
+141120 11:17:00:864 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:864 [main] DEBUG ExternalFormatTable  >> 42217 inserted into externalformats
+141120 11:17:00:864 [main] DEBUG ExternalFormatTable  >> 2 Format ebook-overdrive
+141120 11:17:00:864 [main] DEBUG DatabaseQueries  >> INSERT INTO externalFormats SET formatId = "14",externalDataId = "42217",formatLink = "link",dateAdded = "1416500220864",dateUpdated = "0"
+141120 11:17:00:864 [main] ERROR DatabaseQueries  >> insert prepared Statement error : java.sql.SQLException: Field 'id' doesn't have a default value
+141120 11:17:00:864 [main] DEBUG ExternalFormatTable  >> 42217 inserted into externalformats

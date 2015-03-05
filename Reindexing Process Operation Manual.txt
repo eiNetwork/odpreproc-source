@@ -1,0 +1,30 @@
+;;TO RUN
+;to execute full extract and update ( effect externalData, externalFormats, indexedMetaData)
+ 
+ java -jar reindexingProcess.jar vufindplusdev.einetwork.net   
+
+;;to execute update ( effect externalData, externalFormats, indexedMetaData) 
+;;for now this function still does full extract
+;;this will be effective when the getUpdatedOverdriveIDs method in ExtractOverDriveInfo class is modified 
+;;if Overdrive API provides list of updated metadataIDs, use it to change getUpdatedOverdriveIDs 
+;;and populate overDriveIdSet with updated metadataIDs
+
+ java -jar reindexingProcess.jar vufindplusdev.einetwork.net update
+ 
+ ;;TO CONFIGURE EXCEL .xls EXRACTION
+ ;;change  site/vufindplusdev.einetwork.net/conf/config.ini 
+ 
+ [SpreadSheetTables]
+updateTables = true						;;true turns on .xls extraction
+xlsFileName = Static Values.xls			;;file path and name goes here
+
+;;true --read spreadSheetName and use it as tableName, else use table list for table name (tableName must match workSheetName
+scanSheetNamesForTables = true			
+
+;;put dependent tables later in sequence.
+table0 = externalSource
+table1 = marcMap
+table2 = Format
+table3 = null
+ 
+ 
