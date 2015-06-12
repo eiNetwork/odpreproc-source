@@ -53,6 +53,8 @@ public class DatabaseQueries {
 	 */
 	public ResultSet insertIntoTable(String tableName, HashMap<String, Object> tableContents){
 		
+		try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e) {};
+		
 		sqlQuery = "INSERT INTO " + tableName + " SET ";
 		
 		Iterator<Entry<String, Object>> iter = tableContents.entrySet().iterator();
@@ -74,6 +76,7 @@ public class DatabaseQueries {
 		} catch (SQLException e) {
 			logger.debug(sqlQuery);
 			logger.error( "insert prepared Statement error : " + e) ;
+			try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e1) {};
 			
 			return null;
 		}
@@ -138,6 +141,8 @@ public class DatabaseQueries {
 	 * @return
 	 */
 	public boolean deleteRow(String tableName, HashMap<String, Object> condition, String operator){
+		try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e) {};
+		
 		sqlQuery = "DELETE FROM " + tableName + " WHERE ";
 		
 		Iterator<Entry<String, Object>> iter = condition.entrySet().iterator();
@@ -168,12 +173,15 @@ public class DatabaseQueries {
 	 * @return
 	 */
 	public boolean deleteAndReset(String tableName){
+		try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e) {};
+		
 		sqlQuery = "DELETE FROM " + tableName;
 		String sqlAlter = "alter table " + tableName +" AUTO_INCREMENT = 1";
 		
 	    try {
 			preparedStatement = conn.prepareStatement(sqlQuery);
 			preparedStatement.executeUpdate();
+			preparedStatement.close();
 			preparedStatement = conn.prepareStatement(sqlAlter);
 			preparedStatement.executeUpdate();
 			
@@ -197,6 +205,8 @@ public class DatabaseQueries {
 	 * @return
 	 */
 	public boolean updateTable(String tableName, HashMap<String, Object> changes, HashMap<String, Object> condition, String operator){
+		
+		try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e) {};
 		
 		sqlQuery = "UPDATE " + tableName + " SET ";
 		
@@ -252,6 +262,8 @@ public class DatabaseQueries {
 	 */
 	public ResultSet select(String tableName, HashSet<String> columns, HashMap<String, Object> condition, String operator){
 		
+		try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e) {};
+		
 		sqlQuery = "SELECT ";
 		
 		ResultSet resultSet = null;
@@ -296,6 +308,8 @@ public class DatabaseQueries {
 	 * @return
 	 */
 	public ResultSet selectAllRows(String tableName, HashSet<String> columns){
+
+		try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e) {};
 		
 		sqlQuery = "SELECT ";
 		
@@ -332,6 +346,7 @@ public class DatabaseQueries {
 	 * @return
 	 */
 	public boolean exists(String tableName, HashMap<String, Object> condition, String operator){
+		try { if( preparedStatement != null ) preparedStatement.close(); } catch (Exception e) {};
 		
 		sqlQuery = "SELECT * FROM " + tableName + " WHERE ";
 		ResultSet resultSet;

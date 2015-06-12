@@ -40,6 +40,7 @@ public class IndexedMetaDataTable {
 		ResultSet resultSet = dbQueries.selectAllRows("externalData", columns);
 		String jsonString;
 		try {
+			HashMap<String, Object> condition = new HashMap<String, Object>();
 			while(resultSet.next()){
 				JSONObject metaDataJSON = stringToJSONObject(resultSet.getString("sourceMetaData"));
 				if(metaDataJSON == null){
@@ -58,46 +59,14 @@ public class IndexedMetaDataTable {
 						contentMap.put("language", metaDataJSON.getJSONArray("languages").toString().replace("\"", "\\\""));
 						contentMap.put("publisher", metaDataJSON.getString("publisher").replace("\"", "\\\""));
 						
-						contentMap.put("publishDate", metaDataJSON.getString("publishDateText").replace("\"", "\\\""));
-						
-						/*
-						contentMap.put("author2", metaDataJSON.getJSONArray("creators").getJSONObject(1).getString("fileAs"));
-						contentMap.put("author2_role", "");
-						contentMap.put("author_additional", "");
-						contentMap.put("collection", "");
-						contentMap.put("institution", "");
-						contentMap.put("available_at", "");
-						contentMap.put("description", "");
-						contentMap.put("contents", "");
-						contentMap.put("subject", "");
-						contentMap.put("edition", metaDataJSON.getString("edition").replace("\"", "\\\""));
-						
-						contentMap.put("isbn", "");
-						contentMap.put("issn", "");
-						contentMap.put("upc", "");
-						contentMap.put("lccn", "");
-						contentMap.put("ctrlnum", "");
-						contentMap.put("series", "");
-						contentMap.put("series2", "");
-						contentMap.put("target_audience", "");
-						contentMap.put("mpaa_rating", "");
-						
-						contentMap.put("publishLocation", "");
-						contentMap.put("topic", "");
-						contentMap.put("genre", "");
-						contentMap.put("region", "");
-						contentMap.put("region", "");
-						contentMap.put("notes", "");
-						contentMap.put("url", "");
-						 */
-					
-						
-						HashMap<String, Object> condition = new HashMap<String, Object>();
+						contentMap.put("publishDate", metaDataJSON.getString("publishDate").replace("\"", "\\\""));
+												
+						condition.clear();
 						condition.put("id", resultSet.getInt("id"));
 						if( dbQueries.exists("indexedMetaData",condition, "=") )
 						{
 							logger.debug(resultSet.getInt("id") + " Updating indexedMetaData");
-							condition.put("id", resultSet.getInt("id"));
+							//condition.put("id", resultSet.getInt("id"));
 							dbQueries.updateTable("indexedMetaData", contentMap, condition, "=");
 						}
 						else
@@ -114,6 +83,8 @@ public class IndexedMetaDataTable {
 			}
 		} catch (SQLException e) {
 			logger.error(e);
+		} finally {
+			try { if( resultSet != null ) resultSet.close(); } catch (Exception e) {};
 		}
 		
 	}
