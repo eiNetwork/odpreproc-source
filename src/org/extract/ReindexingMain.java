@@ -82,8 +82,19 @@ public class ReindexingMain {
 		
 		Date currentTime = new Date();
 		
+		// Delete the existing log file
+		File solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrivelog.log");
+		if (solrmarcLog.exists()){
+			solrmarcLog.delete();
+		}
+		for (int i = 1; i <= 10; i++){
+			solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrivelog.log." + i);
+			if (solrmarcLog.exists()){
+				solrmarcLog.delete();
+			}
+		}
 		//logger setup
-		File log4jFile = new File("sites/" + serverName + "/conf/log4j.overdrive_extract.properties");
+		File log4jFile = new File("../../sites/" + serverName + "/conf/log4j.overdrive_extract.properties");
 		if (log4jFile.exists()){
 			PropertyConfigurator.configure(log4jFile.getAbsolutePath());
 		}else{
@@ -105,9 +116,9 @@ public class ReindexingMain {
 			return;
 		}
 		
-		String databaseConnectionInfo = Util.cleanIniValue(configIni.get("Database", "database_vufind_jdbc"));
+		String databaseConnectionInfo = Util.cleanIniValue(configIni.get("Database", "database_reindexer_jdbc"));
 		if (databaseConnectionInfo == null || databaseConnectionInfo.length() == 0) {
-			logger.error("Database connection information not found in Database Section.  Please specify connection information in database_vufind_jdbc.");
+			logger.error("Database connection information not found in Database Section.  Please specify connection information in database_reindexer_jdbc.");
 			System.exit(1);
 		}
 		try {	
@@ -122,6 +133,7 @@ public class ReindexingMain {
 		logger.debug("Calling Excel extract");
 		TablesFromExcel excelTables = new TablesFromExcel();
 		excelTables.extactFromSpreadSheet(configIni, mySqlconn);
+		excelTables = null;
 		
 		String extractType;
 		if(args.length > 1){
@@ -143,6 +155,7 @@ public class ReindexingMain {
 			
 			logger.debug("Starting " + extractType + " extract from overdrive ");
 			extractor.extractOverDriveInfo(configIni, mySqlconn, logEntry, extractType);
+			//extractor = null;
 		
 			currentTime = new Date();
 			logEntry.setEndTime(currentTime.getTime());
@@ -150,12 +163,12 @@ public class ReindexingMain {
 			logger.info("OverDrive Extraction DONE....");
 			
 			//populate externalFormats table
-			logger.debug("Starting externalFormat update");
-			new ExternalFormatTable().setTable(mySqlconn);
+			//logger.debug("Starting externalFormat update");
+			//new ExternalFormatTable().setTable(mySqlconn);
 			
 			//populateExternalFormatsTable
-			logger.debug("Starting indexedMetaData update");
-			new IndexedMetaDataTable(mySqlconn).setIndexMetaDataTable();
+			//logger.debug("Starting indexedMetaData update");
+			//new IndexedMetaDataTable(mySqlconn).setIndexMetaDataTable();
 			
 			logger.info("Database updata DONE....");
 			
@@ -181,7 +194,7 @@ public class ReindexingMain {
 	 */
 	private static Ini loadConfigFile(String filename){
 		//First load the default config file 
-		String configName = "sites/default/conf/" + filename;
+		String configName = "../../sites/default/conf/" + filename;
 		logger.debug("Loading configuration from " + configName);
 		File configFile = new File(configName);
 		if (!configFile.exists()) {
@@ -202,7 +215,7 @@ public class ReindexingMain {
 		}
 		
 		//Now override with the site specific configuration
-		String siteSpecificFilename = "sites/" + serverName + "/conf/" + filename;
+		String siteSpecificFilename = "../../sites/" + serverName + "/conf/" + filename;
 		logger.debug("Loading site specific config from " + siteSpecificFilename);
 		File siteSpecificFile = new File(siteSpecificFilename);
 		if (!siteSpecificFile.exists()) {
@@ -224,7 +237,7 @@ public class ReindexingMain {
 			logger.error("Site Specific config file could not be read.", e);
 		}
 		//Also load password files if they exist
-		String siteSpecificPassword = "sites/" + serverName + "/conf/config.pwd.ini";
+		String siteSpecificPassword = "../../sites/" + serverName + "/conf/config.pwd.ini";
 		logger.debug("Loading password config from " + siteSpecificPassword);
 		File siteSpecificPasswordFile = new File(siteSpecificPassword);
 		if (siteSpecificPasswordFile.exists()) {

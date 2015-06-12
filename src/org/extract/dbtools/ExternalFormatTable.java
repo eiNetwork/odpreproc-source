@@ -24,7 +24,7 @@ public class ExternalFormatTable {
 	private Connection mySqlconn;
 	private Logger logger = Logger.getLogger(ExternalFormatTable.class);
 	
-	ResultSet externalDataResultSet;
+	//ResultSet externalDataResultSet;
 	HashMap<String, Object> formatMap = new HashMap<String, Object>();
 	
 	/**
@@ -44,7 +44,7 @@ public class ExternalFormatTable {
 		columns.add("sourcePrefix");
 		columns.add("sourceMetaData");
 		logger.debug("extracting from externalData");
-		externalDataResultSet = dbQueries.selectAllRows("externalData", columns);
+		ResultSet externalDataResultSet = dbQueries.selectAllRows("externalData", columns);
 		columns.clear();
 		
 		//extract from format table convert it to HashMap
@@ -58,15 +58,22 @@ public class ExternalFormatTable {
 			}
 		} catch (SQLException e1) {
 			logger.error(e1);
+		} finally {
+			try { if( formatDataResultSet != null ) formatDataResultSet.close(); } catch (Exception e) {};
 		}
 				
-		ExternalFormatsInfo externalFormats = new ExternalFormatsInfo();
+		//ExternalFormatsInfo externalFormats = new ExternalFormatsInfo();
 		int count = 0; //just counting number for debug
 		
 		try {
+			HashSet<String> column = new HashSet<String>();
+			HashMap<String, Object> condition = new HashMap<String, Object>();
+			HashMap<String, Object> tableContents = new HashMap<String, Object>();
+			
+			column.add("id");
+
 			while(externalDataResultSet.next()){
 				count++;
-				
 				
 				//convert to JSONObject
 				JSONObject overDriveMetaDataJSON = stringToJSONObject(externalDataResultSet.getString("sourceMetaData"));
@@ -76,9 +83,10 @@ public class ExternalFormatTable {
 					try {
 						//index to traverse through formats array
 						int index = 0;	
+
 						//updating table according to format
 						while(! (overDriveMetaDataJSON.getJSONArray("formats").isNull(index))){
-							HashMap<String, Object> tableContents = new HashMap<String, Object>();
+							//HashMap<String, Object> tableContents = new HashMap<String, Object>();
 							try {
 								tableContents.put("externalDataId",externalDataResultSet.getInt("id"));
 							} catch (SQLException e) {
@@ -90,12 +98,10 @@ public class ExternalFormatTable {
 							tableContents.put("formatId",formatId);
 							tableContents.put("formatLink","link");
 							
-							HashSet<String> column = new HashSet<String>();
-							HashMap<String, Object> condition = new HashMap<String, Object>();
-
-							column.add("id");
-							condition.put("externalDataId", externalFormats.getExternalDataId());
-							condition.put("formatId", externalFormats.getFormatId());
+							//condition.put("externalDataId", externalFormats.getExternalDataId());
+							//condition.put("formatId", externalFormats.getFormatId());
+							condition.put("externalDataId", externalDataResultSet.getInt("id"));
+							condition.put("formatId", formatId);
 							ResultSet rs = dbQueries.select("externalFormats", column, condition, "=");
 							condition.clear();
 							
@@ -106,6 +112,7 @@ public class ExternalFormatTable {
 								condition.put("id", rs.getInt("id"));
 								
 								dbQueries.updateTable("externalFormats", tableContents, condition, "=");
+								condition.clear();
 								logger.debug(count + " updated into externalformats");
 							}else{	
 								tableContents.put("dateAdded",  new Date().getTime() );
@@ -113,6 +120,7 @@ public class ExternalFormatTable {
 								dbQueries.insertIntoTable("externalFormats", tableContents);
 								logger.debug(count + " inserted into externalformats");
 							}
+							try { if( rs != null ) rs.close(); } catch (Exception e) {};
 							tableContents.clear();	
 						}
 							
@@ -125,6 +133,8 @@ public class ExternalFormatTable {
 			}
 		} catch (SQLException e) {
 			logger.error(e);
+		} finally {
+			try { if( externalDataResultSet != null ) externalDataResultSet.close(); } catch (Exception e) {};
 		}
 		
 	}

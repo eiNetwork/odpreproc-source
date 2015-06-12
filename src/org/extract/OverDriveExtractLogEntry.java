@@ -34,7 +34,7 @@ public class OverDriveExtractLogEntry {
 		this.conn = conn;
 		startLog();
 	}
-	/*
+	/* 
 	 * create new entry in the table, get the auto generated id from table
 	 */
 	public void startLog(){

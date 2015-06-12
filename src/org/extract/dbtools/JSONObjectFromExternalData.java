@@ -52,6 +52,8 @@ public class JSONObjectFromExternalData {
 			
 		} catch (SQLException e) {
 			logger.error( e );
+		} finally {
+			try { if( resultSet != null ) resultSet.close(); } catch (Exception e) {};
 		}
 		try {
 			metaDataJSON = new JSONObject(metaData);

@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -68,6 +69,7 @@ public class ExtractOverDriveInfo {
 	private HashMap<String, Long> advantageCollectionToLibMap = new HashMap<String, Long>();
 	private HashMap<String, ExternalDataInfo> externalDataMap = new HashMap<String, ExternalDataInfo>();
 	private HashMap<String, String> externalIdandPrefixMap = new HashMap<String, String>();
+	private HashMap<String, Object> formatMap = new HashMap<String, Object>();
 	
 	/**
 	 * Set up OverDrvie Client info from configuration file for OverDrive API authentication
@@ -137,14 +139,14 @@ public class ExtractOverDriveInfo {
 		
 		String jsonString;
 		
-		tempContentMap.clear();
 		//populating tableContents HashMap, with data from overdrive data stored in ExternalDataInfo object
 		Iterator<Entry<String, ExternalDataInfo>> iter = externalDataMap.entrySet().iterator();
 	    while (iter.hasNext()) {
 	        Entry<String, ExternalDataInfo> pairs = iter.next();
 	        //tableContents.put("id",  pairs.getValue().getId());
 	        ExternalDataInfo externalDataInfoObj = pairs.getValue();
-	        tempContentMap.put("sourceId", externalDataInfoObj.getSourceId());
+	        tempContentMap.clear();
+			tempContentMap.put("sourceId", externalDataInfoObj.getSourceId());
 	        //tableContents.put("resourceId ", externalDataInfo.getResourceId());
 	        tempContentMap.put("record_Id", externalDataInfoObj.getRecord_Id());
 	        tempContentMap.put("sourcePrefix", externalDataInfoObj.getSourcePrefix() );
@@ -200,18 +202,92 @@ public class ExtractOverDriveInfo {
 				}else{
 					logEntry.incRecordsErrors();
 				}
-				
-				
+				try { if( rs != null ) rs.close(); } catch (Exception e) {};
 	        	
 	        }
-	        logEntry.incRecordsProcessed();
-	        //databaseQuery.insertIntoTableIfNotExist("externalData", tempContentMap, tempConditionMap, "=");
-	        externalDataInfoObj =  null;
+	        
+	        // add/update formats
+	        updateExternalFormats(externalDataInfoObj);
 	    }
 	    
 	    tempContentMap.clear();
 	    tempConditionMap.clear();
 	}
+	
+	/**
+	 * insert records into externalFormats table, and 
+	 * call preparedStatement Generator by to insert or update externalFormats table
+	 * 
+	 */
+	private void updateExternalFormats(ExternalDataInfo externalDataInfoObj)
+	{
+        // get the externalData id
+        try
+        {
+	        tempColumnSet.clear();
+	        tempColumnSet.add("id");
+	        tempConditionMap.clear();
+	        tempConditionMap.put("externalId", externalDataInfoObj.getExternalId() );
+	        ResultSet ed_rs = databaseQuery.select("externalData", tempColumnSet, tempConditionMap, "=");
+			if( ed_rs.first() ) {
+				//index to traverse through formats array
+				int index = 0;	
+				int edId = ed_rs.getInt("id");
+				JSONArray formats = externalDataInfoObj.getSourceMetaData().getJSONArray("formats");
+
+				//updating table according to format
+				while(! (formats.isNull(index))){
+					tempContentMap.clear();
+					
+					tempContentMap.put("externalDataId", edId);
+					String format = formats.getJSONObject(index++).getString("id");
+					logger.debug((index -1) + " Format " + format);
+					int formatId = (Integer) formatMap.get(format);
+					tempContentMap.put("formatId",formatId);
+					tempContentMap.put("formatLink","link");
+					
+					//condition.put("externalDataId", externalFormats.getExternalDataId());
+					//condition.put("formatId", externalFormats.getFormatId());
+					tempConditionMap.clear();
+					tempConditionMap.put("externalDataId", edId);
+					tempConditionMap.put("formatId", formatId);
+					ResultSet rs = databaseQuery.select("externalFormats", tempColumnSet, tempConditionMap, "=");
+					tempConditionMap.clear();
+					
+					//check for existing record by exteranlDataId and formatId. Get id if exist for update
+					if(rs.first()){
+						tempContentMap.put("dateUpdated",new Date().getTime());
+						
+						tempConditionMap.put("id", rs.getInt("id"));
+						
+						databaseQuery.updateTable("externalFormats", tempContentMap, tempConditionMap, "=");
+						tempConditionMap.clear();
+						logger.debug(edId + " updated into externalformats");
+					}else{	
+						tempContentMap.put("dateAdded",  new Date().getTime() );
+						tempContentMap.put("dateUpdated", 0);
+						databaseQuery.insertIntoTable("externalFormats", tempContentMap);
+						logger.debug(edId + " inserted into externalformats");
+					}
+					tempContentMap.clear();	
+					try { if( rs != null ) rs.close(); } catch (Exception e) {};
+				}
+				
+			}
+	        
+	        // insert external format objects
+	        
+	        logEntry.incRecordsProcessed();
+	        //databaseQuery.insertIntoTableIfNotExist("externalData", tempContentMap, tempConditionMap, "=");
+	        externalDataInfoObj =  null;
+			try { if( ed_rs != null ) ed_rs.close(); } catch (Exception e) {};
+        }catch (SQLException e){
+        	logger.error(e);
+        }catch (JSONException e){
+        	logger.error(e);
+        }
+	}
+	
 	/**
 	 * Get externalId and sourcePrefix from externalData and store it in HashMap
 	 * this HashMap can be use to check the existing record in the database, instead of running select query every time.
@@ -238,6 +314,8 @@ public class ExtractOverDriveInfo {
 			}
 		} catch (SQLException e) {
 			logger.error("Result Set error : " + e);
+		} finally {
+			try { if( rs != null ) rs.close(); } catch (Exception e) {};
 		}
         
 	}
@@ -247,12 +325,6 @@ public class ExtractOverDriveInfo {
 	 * 
 	 */
 	public void cleanupExternalData(){
-		/*
-		if(!OverdriveClientInfo(configIni, mySqlconn) ){
-
-			return;
-		}
-		*/
 		logger.debug("Starting Cleanup Process " );
 		
 		//if other other parts of code has not called Overdrive for IDs, get overdrive IDs
@@ -288,6 +360,8 @@ public class ExtractOverDriveInfo {
 			prefix = rs.getString("externalIdPrefix");
 		} catch (SQLException e) {
 			logger.error( e );
+		} finally {
+			try { if( rs != null ) rs.close(); } catch (Exception e) {};
 		}
 			
 		//get externalId for all overdrive records
@@ -302,9 +376,20 @@ public class ExtractOverDriveInfo {
 			while(resultSet.next()){
 				//check if the record in table is still available in overdrive api
 				if(! (overDriveIdSet.contains( resultSet.getString("externalId") ) ) ){
+					// delete the metadata
+					tempColumnSet.clear();
+					tempColumnSet.add("id");					
 					tempConditionMap.clear();
-					tempConditionMap.put("externalId", resultSet.getString("externalId") );
+					tempConditionMap.put("externalId", resultSet.getString("externalId") );					
+					ResultSet details = databaseQuery.select("externalData", tempColumnSet, tempConditionMap, "=");
+					tempConditionMap.clear();
+					tempConditionMap.put("id", details.getString("id") );
+					try { if( details != null ) details.close(); } catch (Exception e) {};
+					databaseQuery.deleteRow("indexedMetaData", tempConditionMap, "=");
+					
 					//delete record if not available in overdrive api
+					tempConditionMap.clear();
+					tempConditionMap.put("externalId", resultSet.getString("externalId") );					
 					databaseQuery.deleteRow("externalData", tempConditionMap, "=");
 					logger.debug("Deleting invalid record " + resultSet.getString("externalId") );
 					tempConditionMap.clear();
@@ -317,6 +402,8 @@ public class ExtractOverDriveInfo {
 			}
 		} catch (SQLException e) {
 			logger.error( e );
+		} finally {
+			try { if( resultSet != null ) resultSet.close(); } catch (Exception e) {};
 		}
 		
 	}
@@ -343,7 +430,7 @@ public class ExtractOverDriveInfo {
 			logger.error( e );
 		}
 		Long libraryId = getLibraryIdForOverDriveAccount(libraryName);
-		
+		//numProducts = 900;
 		
 		logger.info(libraryName + " collection has " + numProducts + " products in it.  The libraryId for the collection is " + libraryId);
 	
@@ -352,6 +439,7 @@ public class ExtractOverDriveInfo {
 		jsonHS.clear();
 		jsonHS = new HashSet<JSONObject>();
 		
+		/**/
 		int loopCount = 1;
 		//loop to get a entire unique id from overdrive
 		do{
@@ -428,6 +516,7 @@ public class ExtractOverDriveInfo {
 		
 		try {
 			String libraryName = libraryInfo.getString("name");
+			overDriveProductsKey = libraryInfo.getString("collectionToken");
 			String mainProductUrl = libraryInfo.getJSONObject("links").getJSONObject("products").getString("href");
 			
 			loadProductsFromUrl(libraryName, mainProductUrl);
@@ -454,6 +543,23 @@ public class ExtractOverDriveInfo {
 	 * @param mainProductUrl
 	 */
 	private void loadProductsFromUrl(String libraryName, String mainProductUrl){
+		//extract from format table convert it to HashMap
+		tempColumnSet.clear();
+		tempColumnSet.add("id");
+		tempColumnSet.add("externalFormatId");
+		logger.debug("extracting from format");
+		ResultSet formatDataResultSet = databaseQuery.selectAllRows("format", tempColumnSet);
+		try {
+			while(formatDataResultSet.next()){
+				formatMap.put(formatDataResultSet.getString("externalFormatId"), formatDataResultSet.getInt("id"));
+			}
+		} catch (SQLException e1) {
+			logger.error(e1);
+		} finally {
+			try { if( formatDataResultSet != null ) formatDataResultSet.close(); } catch (Exception e) {};
+		}
+		tempColumnSet.clear();
+
 		logger.debug("getting overdrive IDs");	
 		if(extractType.contains("update"))
 		{
@@ -468,12 +574,26 @@ public class ExtractOverDriveInfo {
 		
 		logger.debug("extracting data from api");
 		
-		setMetaDataFromOverdrive( mainProductUrl);
-		setAvailabilityFromOverdrive(mainProductUrl);
-		setExternalDataFromDB() ;
-		
-		updateExternalData();
-		
+		Iterator<String> idIterator = overDriveIdSet.iterator();
+		ArrayList<String> idsToGrab = new ArrayList<String>();
+		while(idIterator.hasNext() || !idsToGrab.isEmpty()){
+			// add it to the list we're requesting
+			if( idIterator.hasNext() ) {
+				String overdriveId = idIterator.next();
+				idsToGrab.add(overdriveId);
+			}
+			
+			// we've got a full list (or these are the last remaining ones), so request them
+			if( idsToGrab.size() >= 20 || !idIterator.hasNext() ) {
+				externalDataMap.clear();
+				processBulkMetaData(idsToGrab);
+				setAvailabilityFromOverdrive(mainProductUrl);
+				setExternalDataFromDB();
+				updateExternalData();
+				
+				//System.gc();
+			}
+		}
 		
 		externalDataMap.clear();
 		
@@ -487,7 +607,7 @@ public class ExtractOverDriveInfo {
 	private void setExternalDataFromDB() {
 		
 		ExternalDataInfo externalDataInfoObj;
-		Iterator<String> idIterator = overDriveIdSet.iterator();
+		Iterator<String> idIterator = externalDataMap.keySet().iterator(); //overDriveIdSet.iterator();
 		while(idIterator.hasNext()){
 			String overdriveId = idIterator.next();
 			logger.debug("getting external Source info for : " + overdriveId);
@@ -510,12 +630,14 @@ public class ExtractOverDriveInfo {
 			
 			try {
 				rs.first();
-				externalDataInfoObj.setSourceId( rs.getInt("id"));
+				externalDataInfoObj.setSourceId(rs.getInt("id"));
 				String sourcePrefix = rs.getString("externalIdPrefix");
 				externalDataInfoObj.setRecord_Id(overdriveId + sourcePrefix);
 				externalDataInfoObj.setSourcePrefix(sourcePrefix);
 			} catch (SQLException e1) {
 				logger.error("can not get overdrive info from table -- " + e1);
+			} finally {
+				try { if( rs != null ) rs.close(); } catch (Exception e) {};
 			}
 			
 			//externalDataObj.setResourceId( 1);   // need to work on resourceId cannot be determined during extraction from overdrive
@@ -538,31 +660,92 @@ public class ExtractOverDriveInfo {
 		int count = 0;
 		ExternalDataInfo externalDataInfoObj;
 		Iterator<String> idIterator = overDriveIdSet.iterator();
-		while(idIterator.hasNext()){
-			String overdriveId = idIterator.next();
-			
-			if(externalDataMap.containsKey(overdriveId)){
-				externalDataInfoObj = externalDataMap.get(overdriveId);
-			}
-			else{
-				externalDataInfoObj = new ExternalDataInfo();
+		ArrayList<String> idsToGrab = new ArrayList<String>();
+		while(idIterator.hasNext() || !idsToGrab.isEmpty()){
+			// add it to the list we're requesting
+			if( idIterator.hasNext() ) {
+				String overdriveId = idIterator.next();
+				idsToGrab.add(overdriveId);
 			}
 			
-			logger.debug(count++ +" Extacting metadata for : " + overdriveId);
-			String productMetaDataUrl = mainProductUrl + "/" + overdriveId + "/metadata";
-			JSONObject productMetaDataInfo = callOverDriveURL(productMetaDataUrl);	
+			// we've got a full list (or these are the last remaining ones), so request them
+			if( idsToGrab.size() >= 20 || !idIterator.hasNext() ) {
+				String productMetaDataUrl = "http://api.overdrive.com/v1/collections/" + overDriveProductsKey + "/bulkmetadata?reserveIds";
+				for(int i=0; i<20 && i<idsToGrab.size(); i++) {
+					productMetaDataUrl += ((i==0) ? "=" : ",") + idsToGrab.get(i);
+				}
+				
+				try {
+					//logger.debug(count++ + " Extracting metadata ==> " + productMetaDataUrl);
+					JSONArray metaDataArray = callOverDriveURL(productMetaDataUrl).getJSONArray("metadata");
+					
+					for(int i=0; i<metaDataArray.length(); i++) {
+						JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
+						String overdriveId = productMetaDataInfo.getString("id");
+						idsToGrab.remove(overdriveId);
+						//logger.debug("removed " + overdriveId);
+						
+						if(externalDataMap.containsKey(overdriveId)){
+							externalDataInfoObj = externalDataMap.get(overdriveId);
+						}
+						else{
+							externalDataInfoObj = new ExternalDataInfo();
+						}
+						
+						externalDataInfoObj.setSourceMetaData(productMetaDataInfo);
+						
+						externalDataInfoObj.setIndexedMetaData(null);
+						
+						externalDataInfoObj.setExternalId(overdriveId);
+						Long date = new Date().getTime();
+						externalDataInfoObj.setLastMetaDataCheck( date);
+						externalDataInfoObj.setLastMetaDataChange(date);
+						
+						externalDataMap.put( overdriveId,  externalDataInfoObj);
+					}
+				} catch (JSONException e) {
+					logger.error("ERROR: setting External Data -- " + e );
+				}
+			}
+		}
+	}
+	private void processBulkMetaData(ArrayList<String> idsToGrab) {
+		String productMetaDataUrl = "http://api.overdrive.com/v1/collections/" + overDriveProductsKey + "/bulkmetadata?reserveIds";
+		for(int i=0; i<20 && i<idsToGrab.size(); i++) {
+			productMetaDataUrl += ((i==0) ? "=" : ",") + idsToGrab.get(i);
+		}
 		
-			externalDataInfoObj.setSourceMetaData(productMetaDataInfo);
+		ExternalDataInfo externalDataInfoObj;
+		try {
+			//logger.debug(count++ + " Extracting metadata ==> " + productMetaDataUrl);
+			JSONArray metaDataArray = callOverDriveURL(productMetaDataUrl).getJSONArray("metadata");
 			
-			externalDataInfoObj.setIndexedMetaData(null);
-			
-			externalDataInfoObj.setExternalId(overdriveId);
-			Long date = new Date().getTime();
-			externalDataInfoObj.setLastMetaDataCheck( date);
-			externalDataInfoObj.setLastMetaDataChange(date);
-			
-			externalDataMap.put( overdriveId,  externalDataInfoObj);
-
+			for(int i=0; i<metaDataArray.length(); i++) {
+				JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
+				String overdriveId = productMetaDataInfo.getString("id");
+				idsToGrab.remove(overdriveId);
+				//logger.debug("removed " + overdriveId);
+				
+				if(externalDataMap.containsKey(overdriveId)){
+					externalDataInfoObj = externalDataMap.get(overdriveId);
+				}
+				else{
+					externalDataInfoObj = new ExternalDataInfo();
+				}
+				
+				externalDataInfoObj.setSourceMetaData(productMetaDataInfo);
+				
+				externalDataInfoObj.setIndexedMetaData(null);
+				
+				externalDataInfoObj.setExternalId(overdriveId);
+				Long date = new Date().getTime();
+				externalDataInfoObj.setLastMetaDataCheck( date);
+				externalDataInfoObj.setLastMetaDataChange(date);
+				
+				externalDataMap.put( overdriveId,  externalDataInfoObj);
+			}
+		} catch (JSONException e) {
+			logger.error("ERROR: setting External Data -- " + e );
 		}
 	}
 	/**
@@ -572,7 +755,7 @@ public class ExtractOverDriveInfo {
 	private void setAvailabilityFromOverdrive(String mainProductUrl) {
 		int count = 0;
 		ExternalDataInfo externalDataInfoObj;
-		Iterator<String> idIterator = overDriveIdSet.iterator();
+		Iterator<String> idIterator = externalDataMap.keySet().iterator(); //overDriveIdSet.iterator();
 		while(idIterator.hasNext()){
 			String overdriveId = idIterator.next();
 			
@@ -585,13 +768,12 @@ public class ExtractOverDriveInfo {
 			logger.debug(count++ + " Extacting Availability for : " + overdriveId);
 			String productAvailabilityUrl = mainProductUrl + "/" + overdriveId + "/availability";;
 
-			JSONObject productAvailabilityInfo = callOverDriveURL(productAvailabilityUrl);	
+			JSONObject productAvailabilityInfo = callOverDriveURL(productAvailabilityUrl);
 			try {
 				externalDataInfoObj.setTotalCopies(productAvailabilityInfo.getInt("copiesOwned"));
 				externalDataInfoObj.setAvailableCopies(productAvailabilityInfo.getInt("copiesAvailable"));
 				externalDataInfoObj.setNumberOfHolds(productAvailabilityInfo.getInt("numberOfHolds"));
-			} catch (JSONException e) {
-			
+			} catch (JSONException e) {			
 				logger.error("ERROR: setting External Data -- " + e );
 			}
 			
@@ -610,69 +792,60 @@ public class ExtractOverDriveInfo {
 	 * @return JSONObject
 	 */
 	private JSONObject callOverDriveURL(String overdriveUrl) {
-		int maxConnectTries = 1; //OverDrive states that calling multiple times won't improve responses, but will take longer
-		//logger.debug("Calling overdrive URL " + overdriveUrl);
-		for (int connectTry = 0 ; connectTry < maxConnectTries; connectTry++){
-			if (connectToOverDriveAPI(connectTry != 0)){
-				if (connectTry != 0){
-					logger.debug("Connecting to " + overdriveUrl + " try " + (connectTry + 1));
-				}
-				//Connect to the API to get our token
-				HttpURLConnection conn;
-				try {
-					URL emptyIndexURL = new URL(overdriveUrl);
-					conn = (HttpURLConnection) emptyIndexURL.openConnection();
-					if (conn instanceof HttpsURLConnection){
-						HttpsURLConnection sslConn = (HttpsURLConnection)conn;
-						sslConn.setHostnameVerifier(new HostnameVerifier() {
-							
-							@Override
-							public boolean verify(String hostname, SSLSession session) {
-								//Do not verify host names
-								return true;
-							}
-						});
-					}
-					conn.setRequestMethod("GET");
-					conn.setRequestProperty("Authorization", overDriveAPITokenType + " " + overDriveAPIToken);
-					
-					StringBuilder response = new StringBuilder();
-					if (conn.getResponseCode() == 200) {
-						// Get the response
-						BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-						String line;
-						while ((line = rd.readLine()) != null) {
-							response.append(line);
+		//int maxConnectTries = 1; //OverDrive states that calling multiple times won't improve responses, but will take longer
+		logger.debug("Calling overdrive URL " + overdriveUrl);
+		if (connectToOverDriveAPI(false)){
+			//Connect to the API to get our token
+			HttpURLConnection conn;
+			try {
+				URL emptyIndexURL = new URL(overdriveUrl);
+				conn = (HttpURLConnection) emptyIndexURL.openConnection();
+				if (conn instanceof HttpsURLConnection){
+					HttpsURLConnection sslConn = (HttpsURLConnection)conn;
+					sslConn.setHostnameVerifier(new HostnameVerifier() {
+						
+						@Override
+						public boolean verify(String hostname, SSLSession session) {
+							//Do not verify host names
+							return true;
 						}
-						//logger.debug("  Finished reading response");
-						rd.close();
-						return new JSONObject(response.toString());
-					} else {
-						logger.error("Received error " + conn.getResponseCode() + " connecting to overdrive API try " + connectTry );
-						// Get any errors
-						BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-						String line;
-						while ((line = rd.readLine()) != null) {
-							response.append(line);
-						}
-						logger.debug("  Finished reading response");
-						logger.debug(response.toString());
-	
-						rd.close();
-					}
-	
-				} catch (Exception e) {
-					logger.debug("Error loading data from overdrive API try " + connectTry, e );
+					});
 				}
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("User-Agent", "OD Extractor");
+				conn.setRequestProperty("Authorization", overDriveAPITokenType + " " + overDriveAPIToken);
+				conn.setRequestProperty("Host", "api.overdrive.com");
+				
+				StringBuilder response = new StringBuilder();
+				if (conn.getResponseCode() == 200) {
+					//logger.info("got response");
+					// Get the response
+					BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+					String line;
+					while ((line = rd.readLine()) != null) {
+						response.append(line);
+					}
+					//logger.debug("  Finished reading response");
+					rd.close();
+					return new JSONObject(response.toString());
+				} else {
+					logger.error("Received error " + conn.getResponseCode() + " connecting to overdrive API");// try " + connectTry );
+					// Get any errors
+					BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+					String line;
+					while ((line = rd.readLine()) != null) {
+						response.append(line);
+					}
+					logger.debug("  Finished reading response");
+					logger.debug(response.toString());
+
+					rd.close();
+				}
+
+			} catch (Exception e) {
+				logger.debug("Error loading data from overdrive API");// try " + connectTry, e );
 			}
-			//Something went wrong, try to wait a second to see if the OverDrive API will catch up.
-			/*try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				logger.debug("Could not pause between tries " + connectTry);
-			}*/
 		}
-		logger.error("Failed to call overdrive url " +overdriveUrl + " in " + maxConnectTries + " calls");
 		
 		return null;
 	}
