@@ -148,14 +148,15 @@ public class ExtractOverDriveInfo {
 	        tempContentMap.clear();
 			tempContentMap.put("sourceId", externalDataInfoObj.getSourceId());
 	        //tableContents.put("resourceId ", externalDataInfo.getResourceId());
-	        tempContentMap.put("record_Id", externalDataInfoObj.getRecord_Id());
+		    tempContentMap.put("record_Id", externalDataInfoObj.getRecord_Id());
 	        tempContentMap.put("sourcePrefix", externalDataInfoObj.getSourcePrefix() );
 	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());	
 	        
-	        jsonString = ( externalDataInfoObj.getSourceMetaData() ).toString();
-	        jsonString = jsonString.replace("\"\"", "\"");
-	        jsonString = jsonString.replace("\"", "\\\"");		// to avoid issues with " in mysql prepared Statement
-	        jsonString = jsonString.replace("\\\\\"", "\\\\\\\"");  // replace \\" with \\\" to avoid issues with " in mysql prepared Statement
+	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();
+	        jsonString = sourceMetaData.toString();
+	        jsonString = jsonString.replace("\"", "\"\"");
+	        jsonString = jsonString.replace("\\\"\"", "\\\\\"\"");
+	        
 	        tempContentMap.put("sourceMetaData", jsonString );	  
 	       
 	        tempContentMap.put("indexedMetaData", externalDataInfoObj.getIndexedMetaData());
@@ -183,10 +184,14 @@ public class ExtractOverDriveInfo {
 	        	if( (externalIdandPrefixMap.get(pairs.getKey())).contentEquals(externalDataInfoObj.getSourcePrefix()  )){
 	        		logger.debug("Existing record.. Updating.. " + pairs.getKey() );
 	        		
-	        		databaseQuery.updateTable("externalData", tempContentMap, tempConditionMap, "=");
-
 	        		
-					
+	        		HashSet<String> tCols = new HashSet<String>();
+	        		tCols.add("externalId");
+	        		tCols.add("sourceMetaData");
+	        		HashMap<String,Object> tConds = new HashMap<String,Object>();
+	        		tConds.put("externalId", externalDataInfoObj.getExternalId());
+	        		
+	        		databaseQuery.updateTable("externalData", tempContentMap, tempConditionMap, "=");
 	        		
 	        		existingRecord = true;
 	        	}else{
@@ -195,7 +200,15 @@ public class ExtractOverDriveInfo {
 	        }if(!existingRecord){
 	        	tempContentMap.put( "dateAdded", new Date().getTime() );
 	        	logger.debug("Inserting data into externalData Table for " + pairs.getKey() + " - " + externalDataInfoObj.getExternalId());
-	        	ResultSet rs = databaseQuery.insertIntoTable("externalData", tempContentMap);
+	        	
+	        	
+        		HashSet<String> tCols = new HashSet<String>();
+        		tCols.add("externalId");
+        		tCols.add("sourceMetaData");
+        		HashMap<String,Object> tConds = new HashMap<String,Object>();
+        		tConds.put("externalId", externalDataInfoObj.getExternalId());
+        		
+        		ResultSet rs = databaseQuery.insertIntoTable("externalData", tempContentMap);
 	    
 				if(rs != null ){
 					logEntry.incRecordsAdded();
@@ -439,7 +452,6 @@ public class ExtractOverDriveInfo {
 		jsonHS.clear();
 		jsonHS = new HashSet<JSONObject>();
 		
-		/**/
 		int loopCount = 1;
 		//loop to get a entire unique id from overdrive
 		do{
@@ -471,15 +483,13 @@ public class ExtractOverDriveInfo {
 				//logger.debug("JSON obj : " + productIDs);
 		
 				if (productIDs != null && productIDs.has("products")){
-					JSONArray products;
 					try {
-						products = productIDs.getJSONArray("products");
+						JSONArray products = productIDs.getJSONArray("products");
 						for(int j = 0; j < products.length(); j++){
 							JSONObject productID = products.getJSONObject(j);
 							String id = productID.getString("id");
 							//adding id to Hashset
 							overDriveIdSet.add(id);
-							
 						}
 					} catch (JSONException e) {
 						logger.error( e );
@@ -653,62 +663,9 @@ public class ExtractOverDriveInfo {
 		}
 	}
 	/**
-	 * Extract metadata form overdrive api and add to corresponding externalDataInfo item in hashmap
-	 * @param mainProductUrl
+	 * Extract bulk metadata (up to 20 items by id) from overdrive api and add to corresponding externalDataInfo item in hashmap
+	 * @param idsToGrab
 	 */
-	private void setMetaDataFromOverdrive( String mainProductUrl) {
-		int count = 0;
-		ExternalDataInfo externalDataInfoObj;
-		Iterator<String> idIterator = overDriveIdSet.iterator();
-		ArrayList<String> idsToGrab = new ArrayList<String>();
-		while(idIterator.hasNext() || !idsToGrab.isEmpty()){
-			// add it to the list we're requesting
-			if( idIterator.hasNext() ) {
-				String overdriveId = idIterator.next();
-				idsToGrab.add(overdriveId);
-			}
-			
-			// we've got a full list (or these are the last remaining ones), so request them
-			if( idsToGrab.size() >= 20 || !idIterator.hasNext() ) {
-				String productMetaDataUrl = "http://api.overdrive.com/v1/collections/" + overDriveProductsKey + "/bulkmetadata?reserveIds";
-				for(int i=0; i<20 && i<idsToGrab.size(); i++) {
-					productMetaDataUrl += ((i==0) ? "=" : ",") + idsToGrab.get(i);
-				}
-				
-				try {
-					//logger.debug(count++ + " Extracting metadata ==> " + productMetaDataUrl);
-					JSONArray metaDataArray = callOverDriveURL(productMetaDataUrl).getJSONArray("metadata");
-					
-					for(int i=0; i<metaDataArray.length(); i++) {
-						JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
-						String overdriveId = productMetaDataInfo.getString("id");
-						idsToGrab.remove(overdriveId);
-						//logger.debug("removed " + overdriveId);
-						
-						if(externalDataMap.containsKey(overdriveId)){
-							externalDataInfoObj = externalDataMap.get(overdriveId);
-						}
-						else{
-							externalDataInfoObj = new ExternalDataInfo();
-						}
-						
-						externalDataInfoObj.setSourceMetaData(productMetaDataInfo);
-						
-						externalDataInfoObj.setIndexedMetaData(null);
-						
-						externalDataInfoObj.setExternalId(overdriveId);
-						Long date = new Date().getTime();
-						externalDataInfoObj.setLastMetaDataCheck( date);
-						externalDataInfoObj.setLastMetaDataChange(date);
-						
-						externalDataMap.put( overdriveId,  externalDataInfoObj);
-					}
-				} catch (JSONException e) {
-					logger.error("ERROR: setting External Data -- " + e );
-				}
-			}
-		}
-	}
 	private void processBulkMetaData(ArrayList<String> idsToGrab) {
 		String productMetaDataUrl = "http://api.overdrive.com/v1/collections/" + overDriveProductsKey + "/bulkmetadata?reserveIds";
 		for(int i=0; i<20 && i<idsToGrab.size(); i++) {
