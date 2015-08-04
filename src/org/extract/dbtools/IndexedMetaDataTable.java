@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 /**
@@ -30,15 +31,15 @@ public class IndexedMetaDataTable {
 	 * populate indexedMetaData table
 	 */
 	public void setIndexMetaDataTable(){
-		DatabaseQueries dbQueries = new DatabaseQueries(conn);
+		DatabaseQueries iterationQueries = new DatabaseQueries(conn);
+		DatabaseQueries updateInsertQueries = new DatabaseQueries(conn);
 		HashSet<String> columns = new HashSet<String>();
 		columns.add("id");
 		columns.add("sourceMetaData");
 		//columns.add("totalCopies");
 		//columns.add("availabeCopies");
 		//columns.add("numberOfHolds");
-		ResultSet resultSet = dbQueries.selectAllRows("externalData", columns);
-		String jsonString;
+		ResultSet resultSet = iterationQueries.selectAllRows("externalData", columns);
 		try {
 			HashMap<String, Object> condition = new HashMap<String, Object>();
 			while(resultSet.next()){
@@ -48,32 +49,47 @@ public class IndexedMetaDataTable {
 				}else{
 					try {
 						HashMap<String, Object> contentMap = new HashMap<String, Object>();
-						jsonString = metaDataJSON.getString("title").replace("\"", "\\\"");
-						contentMap.put("title", metaDataJSON.getString("title").replace("\"", "\\\"") );
-						contentMap.put("title_sort",metaDataJSON.getString("sortTitle").replace("\"", "\\\"") );
-						contentMap.put("title_sub", metaDataJSON.getString("title").replace("\"", "\\\""));
-						contentMap.put("title_short", metaDataJSON.getString("title").replace("\"", "\\\""));
-						contentMap.put("title_full", metaDataJSON.getString("title").replace("\"", "\\\""));
-						contentMap.put("title_auth", metaDataJSON.getString("title").replace("\"", "\\\""));
-						contentMap.put("author", metaDataJSON.getJSONArray("creators").getJSONObject(0).getString("fileAs").replace("\"", "\\\"") );
-						contentMap.put("language", metaDataJSON.getJSONArray("languages").toString().replace("\"", "\\\""));
-						contentMap.put("publisher", metaDataJSON.getString("publisher").replace("\"", "\\\""));
-						
-						contentMap.put("publishDate", metaDataJSON.getString("publishDate").replace("\"", "\\\""));
+						if( metaDataJSON.has("title") ) {
+							String titleStr = metaDataJSON.getString("title").replace("\"", "\\\"");
+							contentMap.put("title", titleStr );
+							contentMap.put("title_sub", titleStr);
+							contentMap.put("title_short", titleStr);
+							contentMap.put("title_full", titleStr);
+							contentMap.put("title_auth", titleStr);
+						}
+						if( metaDataJSON.has("sortTitle") ) {
+							contentMap.put("title_sort",metaDataJSON.getString("sortTitle").replace("\"", "\\\"") );
+						}
+						if( metaDataJSON.has("creators") ) {
+							JSONObject creator0 = metaDataJSON.getJSONArray("creators").optJSONObject(0);
+							if( creator0 != null && creator0.has("fileAs") )
+							{
+								contentMap.put("author", creator0.getString("fileAs").replace("\"", "\\\"") );
+							}
+						}
+						if( metaDataJSON.has("languages") ) {
+							contentMap.put("language", metaDataJSON.getJSONArray("languages").toString().replace("\"", "\\\""));
+						}
+						if( metaDataJSON.has("publisher") ) {
+							contentMap.put("publisher", metaDataJSON.getString("publisher").replace("\"", "\\\""));						
+						}
+						if( metaDataJSON.has("publishDate") ) {
+							contentMap.put("publishDate", metaDataJSON.getString("publishDate").replace("\"", "\\\""));
+						}
 												
 						condition.clear();
-						condition.put("id", resultSet.getInt("id"));
-						if( dbQueries.exists("indexedMetaData",condition, "=") )
+						int resultID = resultSet.getInt("id");
+						condition.put("id", resultID);
+						if( updateInsertQueries.exists("indexedMetaData",condition, "=") )
 						{
-							logger.debug(resultSet.getInt("id") + " Updating indexedMetaData");
-							//condition.put("id", resultSet.getInt("id"));
-							dbQueries.updateTable("indexedMetaData", contentMap, condition, "=");
+							//logger.debug(resultID + " Updating indexedMetaData");
+							updateInsertQueries.updateTable("indexedMetaData", contentMap, condition, "=");
 						}
 						else
 						{
-							contentMap.put("id", resultSet.getInt("id"));
-							logger.debug(resultSet.getInt("id") + " Inserting into indexedMetaData table ");
-							dbQueries.insertIntoTable("indexedMetaData", contentMap);
+							logger.debug(resultID + " Inserting into indexedMetaData table ");
+							contentMap.put("id", resultID);
+							updateInsertQueries.insertIntoTable("indexedMetaData", contentMap);
 						}
 					} catch (JSONException e) {
 						logger.error("JSON error " + e);
@@ -112,6 +128,7 @@ public class IndexedMetaDataTable {
 		} catch (JSONException e) {
 			logger.debug("metaData : " + metaData);
 			logger.error("Cound not convert string to JSON " +  e );
+			//System.exit(0);
 			return null;
 		}
 		return metaDataJSON;

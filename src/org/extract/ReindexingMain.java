@@ -83,18 +83,21 @@ public class ReindexingMain {
 		Date currentTime = new Date();
 		
 		// Delete the existing log file
-		File solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrivelog.log");
+		File solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrive.log");
+		//SITE//File solrmarcLog = new File("../logs/overdrivelog.log");
 		if (solrmarcLog.exists()){
 			solrmarcLog.delete();
 		}
 		for (int i = 1; i <= 10; i++){
-			solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrivelog.log." + i);
+			solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrive.log." + i);
+			//SITE//solrmarcLog = new File("../logs/overdrivelog.log." + i);
 			if (solrmarcLog.exists()){
 				solrmarcLog.delete();
 			}
 		}
 		//logger setup
 		File log4jFile = new File("../../sites/" + serverName + "/conf/log4j.overdrive_extract.properties");
+		//SITE//File log4jFile = new File("../conf/log4j.overdrive_extract.properties");
 		if (log4jFile.exists()){
 			PropertyConfigurator.configure(log4jFile.getAbsolutePath());
 		}else{
@@ -155,20 +158,16 @@ public class ReindexingMain {
 			
 			logger.debug("Starting " + extractType + " extract from overdrive ");
 			extractor.extractOverDriveInfo(configIni, mySqlconn, logEntry, extractType);
-			//extractor = null;
+			extractor = null;
 		
 			currentTime = new Date();
 			logEntry.setEndTime(currentTime.getTime());
 			logEntry.updateLog();
 			logger.info("OverDrive Extraction DONE....");
 			
-			//populate externalFormats table
-			//logger.debug("Starting externalFormat update");
-			//new ExternalFormatTable().setTable(mySqlconn);
-			
-			//populateExternalFormatsTable
-			//logger.debug("Starting indexedMetaData update");
-			//new IndexedMetaDataTable(mySqlconn).setIndexMetaDataTable();
+			//populate indexedMetaData Table
+			logger.debug("Starting indexedMetaData update");
+			new IndexedMetaDataTable(mySqlconn).setIndexMetaDataTable();
 			
 			logger.info("Database updata DONE....");
 			
@@ -193,6 +192,7 @@ public class ReindexingMain {
 	 * 				if can not read from file
 	 */
 	private static Ini loadConfigFile(String filename){
+		/*** SITE ***/
 		//First load the default config file 
 		String configName = "../../sites/default/conf/" + filename;
 		logger.debug("Loading configuration from " + configName);
@@ -213,9 +213,13 @@ public class ReindexingMain {
 		} catch (IOException e) {
 			logger.error("Configuration file could not be read.", e);
 		}
-		
+		/***
+		Ini ini = new Ini();
+		/***/
+				
 		//Now override with the site specific configuration
 		String siteSpecificFilename = "../../sites/" + serverName + "/conf/" + filename;
+		//SITE//String siteSpecificFilename = "../conf/" + filename;
 		logger.debug("Loading site specific config from " + siteSpecificFilename);
 		File siteSpecificFile = new File(siteSpecificFilename);
 		if (!siteSpecificFile.exists()) {
@@ -238,6 +242,7 @@ public class ReindexingMain {
 		}
 		//Also load password files if they exist
 		String siteSpecificPassword = "../../sites/" + serverName + "/conf/config.pwd.ini";
+		//SITE//String siteSpecificPassword = "../conf/config.pwd.ini";
 		logger.debug("Loading password config from " + siteSpecificPassword);
 		File siteSpecificPasswordFile = new File(siteSpecificPassword);
 		if (siteSpecificPasswordFile.exists()) {
