@@ -237,7 +237,6 @@ public class DatabaseQueries {
 	    }
 	    
 	    try {
-	    	
 			preparedStatement = conn.prepareStatement(sqlQuery);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {

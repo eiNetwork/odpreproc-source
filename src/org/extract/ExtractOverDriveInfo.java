@@ -60,7 +60,7 @@ public class ExtractOverDriveInfo {
 	private String overDriveProductsKey;
 	private String extractType;
 	
-	private HashSet<Object> updatedIds = new HashSet<Object>();
+	private HashSet<String> removeableIDs = new HashSet<String>(); 
 	private HashSet<JSONObject> jsonHS = new HashSet<JSONObject>();
 	private HashSet<String> tempColumnSet = new HashSet<String>();
 	private HashMap<String, Object> tempContentMap = new HashMap<String, Object>();
@@ -70,6 +70,8 @@ public class ExtractOverDriveInfo {
 	private HashMap<String, ExternalDataInfo> externalDataMap = new HashMap<String, ExternalDataInfo>();
 	private HashMap<String, String> externalIdandPrefixMap = new HashMap<String, String>();
 	private HashMap<String, Object> formatMap = new HashMap<String, Object>();
+	
+	private boolean shouldDoCleanup = false;
 	
 	/**
 	 * Set up OverDrvie Client info from configuration file for OverDrive API authentication
@@ -152,10 +154,11 @@ public class ExtractOverDriveInfo {
 	        tempContentMap.put("sourcePrefix", externalDataInfoObj.getSourcePrefix() );
 	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());	
 	        
-	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();
+	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();	        
 	        jsonString = sourceMetaData.toString();
 	        jsonString = jsonString.replace("\"", "\"\"");
 	        jsonString = jsonString.replace("\\\"\"", "\\\\\"\"");
+	        //logger.debug("=======================\n" + jsonString + "=======================");
 	        
 	        tempContentMap.put("sourceMetaData", jsonString );	  
 	       
@@ -246,10 +249,10 @@ public class ExtractOverDriveInfo {
 				//index to traverse through formats array
 				int index = 0;	
 				int edId = ed_rs.getInt("id");
-				JSONArray formats = externalDataInfoObj.getSourceMetaData().getJSONArray("formats");
+				JSONArray formats = externalDataInfoObj.getSourceMetaData().optJSONArray("formats");
 
 				//updating table according to format
-				while(! (formats.isNull(index))){
+				while( formats != null && !(formats.isNull(index)) ){
 					tempContentMap.clear();
 					
 					tempContentMap.put("externalDataId", edId);
@@ -355,7 +358,12 @@ public class ExtractOverDriveInfo {
 				logger.error("Error loading overdrive titles", e);
 			}
 		}
-			
+		
+		// if we don't have a complete listing of our assets, don't do the rest of this process as it is destructive
+		if( !shouldDoCleanup ) {
+			return;
+		}
+		
 		//get overdrive prefix from externalSource table
 		//HashSet<String> col = new HashSet<String>();
 		tempColumnSet.clear();
@@ -384,34 +392,54 @@ public class ExtractOverDriveInfo {
 		ResultSet resultSet = databaseQuery.select("externalData", tempColumnSet , tempConditionMap, "=");
 		tempConditionMap.clear();
 		tempColumnSet.clear();
-		logger.debug("prcesssing table " + overDriveIdSet.size() );	
-		try {
+		logger.debug("prcesssing table " + overDriveIdSet.size() );
+		try {			
+			// make sure all of these records are still in our collection
+			removeableIDs.clear();
 			while(resultSet.next()){
 				//check if the record in table is still available in overdrive api
 				if(! (overDriveIdSet.contains( resultSet.getString("externalId") ) ) ){
-					// delete the metadata
-					tempColumnSet.clear();
-					tempColumnSet.add("id");					
-					tempConditionMap.clear();
-					tempConditionMap.put("externalId", resultSet.getString("externalId") );					
-					ResultSet details = databaseQuery.select("externalData", tempColumnSet, tempConditionMap, "=");
-					tempConditionMap.clear();
-					tempConditionMap.put("id", details.getString("id") );
-					try { if( details != null ) details.close(); } catch (Exception e) {};
-					databaseQuery.deleteRow("indexedMetaData", tempConditionMap, "=");
-					
-					//delete record if not available in overdrive api
-					tempConditionMap.clear();
-					tempConditionMap.put("externalId", resultSet.getString("externalId") );					
-					databaseQuery.deleteRow("externalData", tempConditionMap, "=");
-					logger.debug("Deleting invalid record " + resultSet.getString("externalId") );
-					tempConditionMap.clear();
-					logEntry.inctRecordsDeleted();
-					logEntry.updateLog();
+					// mark it for deletion
+					removeableIDs.add(resultSet.getString("externalId"));
 				}
 				else{
 					logger.debug("valid overdrive record " + resultSet.getString("externalId"));
 				}
+			}
+			
+			// now add anything that we have 0 copies of
+			tempColumnSet.clear();
+			tempColumnSet.add("externalId");
+			tempConditionMap.put("totalCopies", 0);
+			resultSet = databaseQuery.select("externalData", tempColumnSet , tempConditionMap, "=");
+			while( resultSet.next() ) {
+				removeableIDs.add(resultSet.getString("externalId"));
+			}
+			
+			// now actually delete those items
+			for(String deleteID:removeableIDs) {
+				logger.debug("Deleting invalid record " + deleteID );
+
+				// delete the metadata
+				tempColumnSet.clear();
+				tempColumnSet.add("id");					
+				tempConditionMap.clear();
+				tempConditionMap.put("externalId", deleteID );					
+				ResultSet details = databaseQuery.select("externalData", tempColumnSet, tempConditionMap, "=");
+				if( details.next() ) {
+					tempConditionMap.clear();
+					tempConditionMap.put("id", details.getString("id") );
+					try { if( details != null ) details.close(); } catch (Exception e) {};
+					databaseQuery.deleteRow("indexedMetaData", tempConditionMap, "=");
+				}
+				
+				//delete record if not available in overdrive api
+				tempConditionMap.clear();
+				tempConditionMap.put("externalId", deleteID );					
+				databaseQuery.deleteRow("externalData", tempConditionMap, "=");
+				tempConditionMap.clear();
+				logEntry.inctRecordsDeleted();
+				logEntry.updateLog();				
 			}
 		} catch (SQLException e) {
 			logger.error( e );
@@ -443,7 +471,7 @@ public class ExtractOverDriveInfo {
 			logger.error( e );
 		}
 		Long libraryId = getLibraryIdForOverDriveAccount(libraryName);
-		//numProducts = 900;
+		//numProducts = 300;
 		
 		logger.info(libraryName + " collection has " + numProducts + " products in it.  The libraryId for the collection is " + libraryId);
 	
@@ -498,6 +526,11 @@ public class ExtractOverDriveInfo {
 			}
 			logger.debug("Number of unique ID received : " + overDriveIdSet.size() + ", num of overdrive product : " + numProducts);
 		}while( numProducts != overDriveIdSet.size() && loopCount++ < 5);   //loopCount is for prevent infinite loops
+		
+		// don't do the deletions in the cleanup unless we've received a valid listing of everything
+		if( numProducts == overDriveIdSet.size()) {
+			shouldDoCleanup = true;
+		}
 		
 		jsonHS.clear();
 	}
@@ -600,8 +633,6 @@ public class ExtractOverDriveInfo {
 				setAvailabilityFromOverdrive(mainProductUrl);
 				setExternalDataFromDB();
 				updateExternalData();
-				
-				//System.gc();
 			}
 		}
 		

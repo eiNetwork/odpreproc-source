@@ -76,6 +76,17 @@ public class IndexedMetaDataTable {
 						if( metaDataJSON.has("publishDate") ) {
 							contentMap.put("publishDate", metaDataJSON.getString("publishDate").replace("\"", "\\\""));
 						}
+						if( metaDataJSON.optJSONObject("images") != null ) {
+							JSONObject images = metaDataJSON.getJSONObject("images");
+							if( images != null && images.optJSONObject("cover") != null )
+							{
+								contentMap.put("thumbnail", images.getJSONObject("cover").getString("href").replace("\"", "\\\""));
+							}
+							else if( images != null && images.optJSONObject("thumbnail") != null )
+							{
+								contentMap.put("thumbnail", images.getJSONObject("thumbnail").getString("href").replace("\"", "\\\""));
+							}
+						}
 												
 						condition.clear();
 						int resultID = resultSet.getInt("id");
