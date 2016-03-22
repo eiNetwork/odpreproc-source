@@ -151,7 +151,7 @@ public class TablesFromExcel {
 		logger.debug("adding records from : " + sheetName);
 		HSSFSheet worksheet = workbook.getSheet(sheetName);
 		HSSFRow firstRow = worksheet.getRow(0);
-		int noofColumns = 0;
+		short noofColumns = 0;
 		
 		
 		while(firstRow.getCell( noofColumns++) != null)
@@ -165,7 +165,7 @@ public class TablesFromExcel {
 		{
 			firstRow = worksheet.getRow(0);
 			HSSFRow row = worksheet.getRow(rowCount++);
-			int columnCount = 0;
+			short columnCount = 0;
 			//columns
 			HashMap<String, Object> updateContents = new HashMap<String, Object>();
 			for(int i = 0; i < noofColumns -1; i++)

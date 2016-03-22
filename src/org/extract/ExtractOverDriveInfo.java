@@ -62,6 +62,7 @@ public class ExtractOverDriveInfo {
 	
 	private HashSet<String> removeableIDs = new HashSet<String>(); 
 	private HashSet<JSONObject> jsonHS = new HashSet<JSONObject>();
+	private HashSet<String> tempStringSet = new HashSet<String>();
 	private HashSet<String> tempColumnSet = new HashSet<String>();
 	private HashMap<String, Object> tempContentMap = new HashMap<String, Object>();
 	private HashMap<String, Object> tempConditionMap = new HashMap<String, Object>();
@@ -154,13 +155,13 @@ public class ExtractOverDriveInfo {
 	        tempContentMap.put("sourcePrefix", externalDataInfoObj.getSourcePrefix() );
 	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());	
 	        
-	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();	        
+	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();
 	        jsonString = sourceMetaData.toString();
 	        jsonString = jsonString.replace("\"", "\"\"");
 	        jsonString = jsonString.replace("\\\"\"", "\\\\\"\"");
 	        //logger.debug("=======================\n" + jsonString + "=======================");
 	        
-	        tempContentMap.put("sourceMetaData", jsonString );	  
+	        tempContentMap.put("sourceMetaData", jsonString );
 	       
 	        tempContentMap.put("indexedMetaData", externalDataInfoObj.getIndexedMetaData());
 	        tempContentMap.put("limitedCopies", externalDataInfoObj.getLimitedCopies());
@@ -240,6 +241,7 @@ public class ExtractOverDriveInfo {
         // get the externalData id
         try
         {
+	        tempStringSet.clear();
 	        tempColumnSet.clear();
 	        tempColumnSet.add("id");
 	        tempConditionMap.clear();
@@ -257,13 +259,11 @@ public class ExtractOverDriveInfo {
 					
 					tempContentMap.put("externalDataId", edId);
 					String format = formats.getJSONObject(index++).getString("id");
-					logger.debug((index -1) + " Format " + format);
 					int formatId = (Integer) formatMap.get(format);
 					tempContentMap.put("formatId",formatId);
 					tempContentMap.put("formatLink","link");
+					tempStringSet.add(String.valueOf(formatId));
 					
-					//condition.put("externalDataId", externalFormats.getExternalDataId());
-					//condition.put("formatId", externalFormats.getFormatId());
 					tempConditionMap.clear();
 					tempConditionMap.put("externalDataId", edId);
 					tempConditionMap.put("formatId", formatId);
@@ -289,9 +289,29 @@ public class ExtractOverDriveInfo {
 					try { if( rs != null ) rs.close(); } catch (Exception e) {};
 				}
 				
+				// now remove any formats for this item that weren't included there
+				tempConditionMap.clear();
+				tempConditionMap.put("externalDataId", edId);
+				tempColumnSet.clear();
+				tempColumnSet.add("id");
+				tempColumnSet.add("formatId");
+				ResultSet ef_rs = databaseQuery.select("externalFormats", tempColumnSet, tempConditionMap, "=");
+				tempColumnSet.clear();
+				removeableIDs.clear();
+				while(ef_rs.next()) {
+					if( !tempStringSet.contains(ef_rs.getString("formatId")) ) {
+						removeableIDs.add(ef_rs.getString("id"));
+					}
+				}
+				try { if( ef_rs != null ) ef_rs.close(); } catch (Exception e) {};
+				
+				// clear this list out 
+				for(String deleteID:removeableIDs) {
+					tempConditionMap.clear();
+					tempConditionMap.put("id", deleteID);
+					databaseQuery.deleteRow("externalFormats", tempConditionMap, "=");
+				}
 			}
-	        
-	        // insert external format objects
 	        
 	        logEntry.incRecordsProcessed();
 	        //databaseQuery.insertIntoTableIfNotExist("externalData", tempContentMap, tempConditionMap, "=");
@@ -344,7 +364,7 @@ public class ExtractOverDriveInfo {
 		logger.debug("Starting Cleanup Process " );
 		
 		//if other other parts of code has not called Overdrive for IDs, get overdrive IDs
-		if(overDriveIdSet.isEmpty()){
+		if( overDriveIdSet.isEmpty()){
 			
 			logger.debug("get ids of overdrive products");
 			JSONObject libraryInfo = callOverDriveURL("http://api.overdrive.com/v1/libraries/" + accountId);
@@ -422,7 +442,7 @@ public class ExtractOverDriveInfo {
 
 				// delete the metadata
 				tempColumnSet.clear();
-				tempColumnSet.add("id");					
+				tempColumnSet.add("id");
 				tempConditionMap.clear();
 				tempConditionMap.put("externalId", deleteID );					
 				ResultSet details = databaseQuery.select("externalData", tempColumnSet, tempConditionMap, "=");
@@ -441,6 +461,11 @@ public class ExtractOverDriveInfo {
 				logEntry.inctRecordsDeleted();
 				logEntry.updateLog();				
 			}
+			
+			// now remove orphan formats
+			tempConditionMap.clear();
+			tempConditionMap.put("externalDataId", "select id from externalData");					
+			databaseQuery.deleteRow("externalFormats", tempConditionMap, "not in");
 		} catch (SQLException e) {
 			logger.error( e );
 		} finally {
@@ -531,7 +556,7 @@ public class ExtractOverDriveInfo {
 		if( numProducts == overDriveIdSet.size()) {
 			shouldDoCleanup = true;
 		}
-		
+
 		jsonHS.clear();
 	}
 
@@ -712,7 +737,6 @@ public class ExtractOverDriveInfo {
 				JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
 				String overdriveId = productMetaDataInfo.getString("id");
 				idsToGrab.remove(overdriveId);
-				//logger.debug("removed " + overdriveId);
 				
 				if(externalDataMap.containsKey(overdriveId)){
 					externalDataInfoObj = externalDataMap.get(overdriveId);
