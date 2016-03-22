@@ -59,6 +59,12 @@ import java.sql.SQLException;
  * @author Devesh - EI Network 
  */
 public class ReindexingMain {
+	
+	/**
+	 * This parameter flips this file between support for vufind classic and vufindplus.  Toggle it to whichever support you are compiling for.
+	 */
+	private static boolean IS_VUFIND_CLASSIC = true;
+	
 	private static Logger logger;
 	private static String serverName;
 	private static Connection mySqlconn;
@@ -83,21 +89,18 @@ public class ReindexingMain {
 		Date currentTime = new Date();
 		
 		// Delete the existing log file
-		File solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrive.log");
-		//SITE//File solrmarcLog = new File("../logs/overdrivelog.log");
+		File solrmarcLog = new File(IS_VUFIND_CLASSIC ? "../logs/overdrivelog.log" : ("../../sites/" + serverName + "/logs/overdrive.log"));
 		if (solrmarcLog.exists()){
 			solrmarcLog.delete();
 		}
 		for (int i = 1; i <= 10; i++){
-			solrmarcLog = new File("../../sites/" + serverName + "/logs/overdrive.log." + i);
-			//SITE//solrmarcLog = new File("../logs/overdrivelog.log." + i);
+			solrmarcLog = new File((IS_VUFIND_CLASSIC ? "../logs/overdrivelog.log." : ("../../sites/" + serverName + "/logs/overdrive.log.")) + i);
 			if (solrmarcLog.exists()){
 				solrmarcLog.delete();
 			}
 		}
 		//logger setup
-		File log4jFile = new File("../../sites/" + serverName + "/conf/log4j.overdrive_extract.properties");
-		//SITE//File log4jFile = new File("../conf/log4j.overdrive_extract.properties");
+		File log4jFile = new File(IS_VUFIND_CLASSIC ? "../conf/log4j.overdrive_extract.properties" : ("../../sites/" + serverName + "/conf/log4j.overdrive_extract.properties"));
 		if (log4jFile.exists()){
 			PropertyConfigurator.configure(log4jFile.getAbsolutePath());
 		}else{
@@ -192,34 +195,32 @@ public class ReindexingMain {
 	 * 				if can not read from file
 	 */
 	private static Ini loadConfigFile(String filename){
-		/*** SITE ***/
-		//First load the default config file 
-		String configName = "../../sites/default/conf/" + filename;
-		logger.debug("Loading configuration from " + configName);
-		File configFile = new File(configName);
-		if (!configFile.exists()) {
-			logger.error("Could not find configuration file " + configName);
-			System.exit(1);
-		}
+		// create configuration file
+		Ini ini = new Ini();
+		if( !IS_VUFIND_CLASSIC ) {
+			//First load the default config file 
+			String configName = "../../sites/default/conf/" + filename;
+			logger.debug("Loading configuration from " + configName);
+			File configFile = new File(configName);
+			if (!configFile.exists()) {
+				logger.error("Could not find configuration file " + configName);
+				System.exit(1);
+			}
 		
-		// Parse the configuration file
-		Ini ini = new Ini();
-		try {
-			ini.load(new FileReader(configFile));
-		} catch (InvalidFileFormatException e) {
-			logger.error("Configuration file is not valid.  Please check the syntax of the file.", e);
-		} catch (FileNotFoundException e) {
-			logger.error("Configuration file could not be found.  You must supply a configuration file in conf called config.ini.", e);
-		} catch (IOException e) {
-			logger.error("Configuration file could not be read.", e);
+			// Parse the configuration file
+			try {
+				ini.load(new FileReader(configFile));
+			} catch (InvalidFileFormatException e) {
+				logger.error("Configuration file is not valid.  Please check the syntax of the file.", e);
+			} catch (FileNotFoundException e) {
+				logger.error("Configuration file could not be found.  You must supply a configuration file in conf called config.ini.", e);
+			} catch (IOException e) {
+				logger.error("Configuration file could not be read.", e);
+			}
 		}
-		/***
-		Ini ini = new Ini();
-		/***/
 				
 		//Now override with the site specific configuration
-		String siteSpecificFilename = "../../sites/" + serverName + "/conf/" + filename;
-		//SITE//String siteSpecificFilename = "../conf/" + filename;
+		String siteSpecificFilename = ((IS_VUFIND_CLASSIC ? "../conf/" : ("../../sites/" + serverName + "/conf/")) + filename);
 		logger.debug("Loading site specific config from " + siteSpecificFilename);
 		File siteSpecificFile = new File(siteSpecificFilename);
 		if (!siteSpecificFile.exists()) {
@@ -241,8 +242,7 @@ public class ReindexingMain {
 			logger.error("Site Specific config file could not be read.", e);
 		}
 		//Also load password files if they exist
-		String siteSpecificPassword = "../../sites/" + serverName + "/conf/config.pwd.ini";
-		//SITE//String siteSpecificPassword = "../conf/config.pwd.ini";
+		String siteSpecificPassword = IS_VUFIND_CLASSIC ? "../conf/config.pwd.ini" : ("../../sites/" + serverName + "/conf/config.pwd.ini");
 		logger.debug("Loading password config from " + siteSpecificPassword);
 		File siteSpecificPasswordFile = new File(siteSpecificPassword);
 		if (siteSpecificPasswordFile.exists()) {

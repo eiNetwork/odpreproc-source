@@ -152,7 +152,8 @@ public class DatabaseQueries {
 	    		 sqlQuery += " and ";
 	    	}
 	        Entry<String, Object> pairs = iter.next();
-	        sqlQuery += pairs.getKey() + " " + operator + " \"" + pairs.getValue() + "\"";
+	        boolean useParens = ((operator.toUpperCase().equals("IN")) || (operator.toUpperCase().equals("NOT IN"))); 
+	        sqlQuery += pairs.getKey() + " " + operator + " " + (useParens ? "(" : "\"") + pairs.getValue() + (useParens ? ")" : "\"");
 	        and = true;
 	    }
 	    
