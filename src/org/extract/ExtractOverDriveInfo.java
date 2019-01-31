@@ -153,17 +153,25 @@ public class ExtractOverDriveInfo {
 	        //tableContents.put("resourceId ", externalDataInfo.getResourceId());
 		    tempContentMap.put("record_Id", externalDataInfoObj.getRecord_Id());
 	        tempContentMap.put("sourcePrefix", externalDataInfoObj.getSourcePrefix() );
-	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());	
-	        
+	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());
+
 	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();
 	        jsonString = sourceMetaData.toString();
-	        jsonString = jsonString.replace("\"", "\"\"");
-	        jsonString = jsonString.replace("\\\"\"", "\\\\\"\"");
-	        //logger.debug("=======================\n" + jsonString + "=======================");
-	        
+	        if( jsonString != null ) {
+	            // remove trailing spaces that break our parsing
+	            jsonString = jsonString.replace("\\\\\"", "\"");
+	            jsonString = jsonString.replace("\"", "\"\"");
+	            jsonString = jsonString.replace("\\\"\"", "\\\\\"\"");
+	            //logger.debug("=======================\n" + jsonString + "=======================");
+	        }
 	        tempContentMap.put("sourceMetaData", jsonString );
 	       
-	        tempContentMap.put("indexedMetaData", externalDataInfoObj.getIndexedMetaData());
+	        jsonString = externalDataInfoObj.getIndexedMetaData();
+	        // remove trailing spaces that break our parsing
+	        if( jsonString != null ) {
+	            jsonString = jsonString.replace("\\\\\"", "\"");
+	        }
+	        tempContentMap.put("indexedMetaData", jsonString);
 	        tempContentMap.put("limitedCopies", externalDataInfoObj.getLimitedCopies());
 	        tempContentMap.put("totalCopies", externalDataInfoObj.getTotalCopies());
 	        tempContentMap.put("availableCopies", externalDataInfoObj.getAvailableCopies());
@@ -259,6 +267,9 @@ public class ExtractOverDriveInfo {
 					
 					tempContentMap.put("externalDataId", edId);
 					String format = formats.getJSONObject(index++).getString("id");
+					if( !formatMap.containsKey(format) ) {
+						logger.error("Unsupported format error: " + format + " not found in reindexer.format table");
+					}
 					int formatId = (Integer) formatMap.get(format);
 					tempContentMap.put("formatId",formatId);
 					tempContentMap.put("formatLink","link");
@@ -504,7 +515,7 @@ public class ExtractOverDriveInfo {
 		
 		jsonHS.clear();
 		jsonHS = new HashSet<JSONObject>();
-		
+
 		int loopCount = 1;
 		//loop to get a entire unique id from overdrive
 		do{
