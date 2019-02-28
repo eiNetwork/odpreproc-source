@@ -57,6 +57,41 @@ public class IndexedMetaDataTable {
 							contentMap.put("title_full", titleStr);
 							contentMap.put("title_auth", titleStr);
 						}
+						if( metaDataJSON.has("fullDescription") ) {
+							contentMap.put("description",metaDataJSON.getString("fullDescription").replace("\"", "\\\"") );
+						}
+						if( metaDataJSON.has("subjects") ) {
+							JSONArray subjects = metaDataJSON.getJSONArray("subjects");
+							JSONArray subject = new JSONArray();
+							for( int i=0; i<subjects.length(); i++) {
+								if( subjects.optJSONObject(i).has("value") ) {
+									subject.put(subjects.optJSONObject(i).getString("value"));
+								}
+							}
+							if( subject.length() > 0 )
+							{
+								contentMap.put("subject", subject.toString().replace("\"", "\\\"") );
+							}
+						}
+						if( metaDataJSON.has("formats") ) {
+							JSONArray isbn = new JSONArray();
+							JSONArray formats = metaDataJSON.getJSONArray("formats");
+							for( int i=0; i<formats.length(); i++) {
+								if( formats.optJSONObject(i).has("identifiers") ) {
+									JSONArray identifiers = formats.optJSONObject(i).getJSONArray("identifiers");
+									for( int j=0; j<identifiers.length(); j++ ) {
+										JSONObject thisIdentifier = identifiers.getJSONObject(j);
+										if( thisIdentifier.has("type") && thisIdentifier.has("value") && thisIdentifier.getString("type").equals("ISBN") ) {
+											isbn.put(thisIdentifier.getString("value"));
+										}
+									}
+								}
+							}
+							if( isbn.length() > 0 )
+							{
+								contentMap.put("isbn", isbn.toString().replace("\"", "\\\"") );
+							}
+						}
 						if( metaDataJSON.has("sortTitle") ) {
 							contentMap.put("title_sort",metaDataJSON.getString("sortTitle").replace("\"", "\\\"") );
 						}
