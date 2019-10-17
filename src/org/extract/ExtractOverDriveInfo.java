@@ -742,9 +742,10 @@ public class ExtractOverDriveInfo {
 		ExternalDataInfo externalDataInfoObj;
 		try {
 			//logger.debug(count++ + " Extracting metadata ==> " + productMetaDataUrl);
-			JSONArray metaDataArray = callOverDriveURL(productMetaDataUrl).getJSONArray("metadata");
+			JSONObject results = callOverDriveURL(productMetaDataUrl);
+			JSONArray metaDataArray = (results == null) ? null : results.getJSONArray("metadata");
 			
-			for(int i=0; i<metaDataArray.length(); i++) {
+			for(int i=0; (metaDataArray != null) && i<metaDataArray.length(); i++) {
 				JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
 				String overdriveId = productMetaDataInfo.getString("id");
 				idsToGrab.remove(overdriveId);
@@ -815,61 +816,72 @@ public class ExtractOverDriveInfo {
 	 * @return JSONObject
 	 */
 	private JSONObject callOverDriveURL(String overdriveUrl) {
-		//int maxConnectTries = 1; //OverDrive states that calling multiple times won't improve responses, but will take longer
+		int maxConnectTries = 1; //OverDrive states that calling multiple times won't improve responses, but will take longer
 		logger.debug("Calling overdrive URL " + overdriveUrl);
-		if (connectToOverDriveAPI(false)){
-			//Connect to the API to get our token
-			HttpURLConnection conn;
-			try {
-				URL emptyIndexURL = new URL(overdriveUrl);
-				conn = (HttpURLConnection) emptyIndexURL.openConnection();
-				if (conn instanceof HttpsURLConnection){
-					HttpsURLConnection sslConn = (HttpsURLConnection)conn;
-					sslConn.setHostnameVerifier(new HostnameVerifier() {
-						
-						@Override
-						public boolean verify(String hostname, SSLSession session) {
-							//Do not verify host names
-							return true;
+		for (int connectTry = 0 ; connectTry < maxConnectTries; connectTry++){
+			if (connectToOverDriveAPI(connectTry != 0)){
+				if (connectTry != 0){
+					logger.debug("Connecting to " + overdriveUrl + " try " + (connectTry + 1));
+				}
+				//Connect to the API to get our token
+				HttpURLConnection conn;
+				try {
+					URL emptyIndexURL = new URL(overdriveUrl);
+					conn = (HttpURLConnection) emptyIndexURL.openConnection();
+					if (conn instanceof HttpsURLConnection){
+						HttpsURLConnection sslConn = (HttpsURLConnection)conn;
+						sslConn.setHostnameVerifier(new HostnameVerifier() {
+
+							@Override
+							public boolean verify(String hostname, SSLSession session) {
+								//Do not verify host names
+								return true;
+							}
+						});
+					}
+					conn.setRequestMethod("GET");
+					conn.setRequestProperty("User-Agent", "OD Extractor");
+					conn.setRequestProperty("Authorization", overDriveAPITokenType + " " + overDriveAPIToken);
+					conn.setRequestProperty("Host", "api.overdrive.com");
+
+					StringBuilder response = new StringBuilder();
+					if (conn.getResponseCode() == 200) {
+						//logger.info("got response");
+						// Get the response
+						BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+						String line;
+						while ((line = rd.readLine()) != null) {
+							response.append(line);
 						}
-					});
-				}
-				conn.setRequestMethod("GET");
-				conn.setRequestProperty("User-Agent", "OD Extractor");
-				conn.setRequestProperty("Authorization", overDriveAPITokenType + " " + overDriveAPIToken);
-				conn.setRequestProperty("Host", "api.overdrive.com");
-				
-				StringBuilder response = new StringBuilder();
-				if (conn.getResponseCode() == 200) {
-					//logger.info("got response");
-					// Get the response
-					BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-					String line;
-					while ((line = rd.readLine()) != null) {
-						response.append(line);
-					}
-					//logger.debug("  Finished reading response");
-					rd.close();
-					return new JSONObject(response.toString());
-				} else {
-					logger.error("Received error " + conn.getResponseCode() + " connecting to overdrive API");// try " + connectTry );
-					// Get any errors
-					BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-					String line;
-					while ((line = rd.readLine()) != null) {
-						response.append(line);
-					}
-					logger.debug("  Finished reading response");
-					logger.debug(response.toString());
+						//logger.debug("  Finished reading response");
+						rd.close();
+						return new JSONObject(response.toString());
+					} else {
+						logger.error("Received error " + conn.getResponseCode() + " connecting to overdrive API");// try " + connectTry );
+						// Get any errors
+						BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+						String line;
+						while ((line = rd.readLine()) != null) {
+							response.append(line);
+						}
+						logger.debug("  Finished reading response");
+						logger.debug(response.toString());
 
-					rd.close();
+						rd.close();
+					}
+				} catch (Exception e) {
+					logger.debug("Error loading data from overdrive API");// try " + connectTry, e );
 				}
-
-			} catch (Exception e) {
-				logger.debug("Error loading data from overdrive API");// try " + connectTry, e );
+			}
+			//Something went wrong, try to wait 2 minutes to see if the OverDrive API will catch up.
+			try {
+				Thread.sleep(120000);
+			} catch (InterruptedException e) {
+				logger.debug("Could not pause between tries " + connectTry);
 			}
 		}
-		
+		logger.error("Failed to call overdrive url " +overdriveUrl + " in " + maxConnectTries + " calls");
+
 		return null;
 	}
 	/**
