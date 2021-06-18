@@ -153,7 +153,7 @@ public class ExtractOverDriveInfo {
 	        //tableContents.put("resourceId ", externalDataInfo.getResourceId());
 		    tempContentMap.put("record_Id", externalDataInfoObj.getRecord_Id());
 	        tempContentMap.put("sourcePrefix", externalDataInfoObj.getSourcePrefix() );
-	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());
+	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());	
 
 	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();
 	        jsonString = sourceMetaData.toString();
@@ -562,7 +562,7 @@ public class ExtractOverDriveInfo {
 			}
 			logger.debug("Number of unique ID received : " + overDriveIdSet.size() + ", num of overdrive product : " + numProducts);
 		}while( numProducts != overDriveIdSet.size() && loopCount++ < 5);   //loopCount is for prevent infinite loops
-		
+
 		// don't do the deletions in the cleanup unless we've received a valid listing of everything
 		if( numProducts == overDriveIdSet.size()) {
 			shouldDoCleanup = true;
@@ -666,7 +666,8 @@ public class ExtractOverDriveInfo {
 			if( idsToGrab.size() >= 20 || !idIterator.hasNext() ) {
 				externalDataMap.clear();
 				processBulkMetaData(idsToGrab);
-				setAvailabilityFromOverdrive(mainProductUrl);
+				processBulkAvailability(idsToGrab);
+				//setAvailabilityFromOverdrive(mainProductUrl);
 				setExternalDataFromDB();
 				updateExternalData();
 			}
@@ -748,7 +749,7 @@ public class ExtractOverDriveInfo {
 			for(int i=0; (metaDataArray != null) && i<metaDataArray.length(); i++) {
 				JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
 				String overdriveId = productMetaDataInfo.getString("id");
-				idsToGrab.remove(overdriveId);
+				//idsToGrab.remove(overdriveId);
 				
 				if(externalDataMap.containsKey(overdriveId)){
 					externalDataInfoObj = externalDataMap.get(overdriveId);
@@ -766,6 +767,53 @@ public class ExtractOverDriveInfo {
 				externalDataInfoObj.setLastMetaDataCheck( date);
 				externalDataInfoObj.setLastMetaDataChange(date);
 				
+				externalDataMap.put( overdriveId,  externalDataInfoObj);
+			}
+		} catch (JSONException e) {
+			logger.error("ERROR: setting External Data -- " + e );
+		}
+	}
+	/**
+	 * Extract bulk availability (up to 20 items by id) from overdrive api and add to corresponding externalDataInfo item in hashmap
+	 * @param idsToGrab
+	 */
+	private void processBulkAvailability(ArrayList<String> idsToGrab) {
+		String productAvailabilityUrl = "https://api.overdrive.com/v2/collections/" + overDriveProductsKey + "/availability?products";
+		for(int i=0; i<20 && i<idsToGrab.size(); i++) {
+			productAvailabilityUrl += ((i==0) ? "=" : ",") + idsToGrab.get(i);
+		}
+		
+		ExternalDataInfo externalDataInfoObj;
+		try {
+			//logger.debug(count++ + " Extracting metadata ==> " + productMetaDataUrl);
+			JSONObject results = callOverDriveURL(productAvailabilityUrl);
+			JSONArray availabilityArray = (results == null) ? null : results.getJSONArray("availability");
+			
+			for(int i=0; (availabilityArray != null) && i<availabilityArray.length(); i++) {
+				JSONObject productAvailabilityInfo = availabilityArray.getJSONObject(i);
+				String overdriveId = productAvailabilityInfo.getString("reserveId");
+				idsToGrab.remove(overdriveId);
+				
+				if(externalDataMap.containsKey(overdriveId)){
+					externalDataInfoObj = externalDataMap.get(overdriveId);
+				}
+				else{
+					externalDataInfoObj = new ExternalDataInfo();
+				}
+				logger.debug(i + " Extacting Availability for : " + overdriveId);
+				try {
+					externalDataInfoObj.setTotalCopies(productAvailabilityInfo.getInt("copiesOwned"));
+					externalDataInfoObj.setAvailableCopies(productAvailabilityInfo.getInt("copiesAvailable"));
+					externalDataInfoObj.setNumberOfHolds(productAvailabilityInfo.getInt("numberOfHolds"));
+				} catch (JSONException e) {			
+					logger.error("ERROR: setting External Data -- " + e );
+				}
+			
+				Long date = new Date().getTime();
+				externalDataInfoObj.setExternalId(overdriveId);
+				externalDataInfoObj.setLastAvailabilityCheck(date);
+				externalDataInfoObj.setLastAvailabilityChange(date);
+			
 				externalDataMap.put( overdriveId,  externalDataInfoObj);
 			}
 		} catch (JSONException e) {
@@ -831,7 +879,7 @@ public class ExtractOverDriveInfo {
 					if (conn instanceof HttpsURLConnection){
 						HttpsURLConnection sslConn = (HttpsURLConnection)conn;
 						sslConn.setHostnameVerifier(new HostnameVerifier() {
-
+							
 							@Override
 							public boolean verify(String hostname, SSLSession session) {
 								//Do not verify host names
@@ -843,7 +891,7 @@ public class ExtractOverDriveInfo {
 					conn.setRequestProperty("User-Agent", "OD Extractor");
 					conn.setRequestProperty("Authorization", overDriveAPITokenType + " " + overDriveAPIToken);
 					conn.setRequestProperty("Host", "api.overdrive.com");
-
+					
 					StringBuilder response = new StringBuilder();
 					if (conn.getResponseCode() == 200) {
 						//logger.info("got response");
@@ -857,7 +905,7 @@ public class ExtractOverDriveInfo {
 						rd.close();
 						return new JSONObject(response.toString());
 					} else {
-						logger.error("Received error " + conn.getResponseCode() + " connecting to overdrive API");// try " + connectTry );
+						logger.error("Received error " + conn.getResponseCode() + " connecting to overdrive API try " + connectTry );
 						// Get any errors
 						BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
 						String line;
@@ -866,11 +914,11 @@ public class ExtractOverDriveInfo {
 						}
 						logger.debug("  Finished reading response");
 						logger.debug(response.toString());
-
+	
 						rd.close();
 					}
 				} catch (Exception e) {
-					logger.debug("Error loading data from overdrive API");// try " + connectTry, e );
+					logger.debug("Error loading data from overdrive API try " + connectTry, e );
 				}
 			}
 			//Something went wrong, try to wait 2 minutes to see if the OverDrive API will catch up.
@@ -881,7 +929,7 @@ public class ExtractOverDriveInfo {
 			}
 		}
 		logger.error("Failed to call overdrive url " +overdriveUrl + " in " + maxConnectTries + " calls");
-
+		
 		return null;
 	}
 	/**
