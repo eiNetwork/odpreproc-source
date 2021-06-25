@@ -59,6 +59,7 @@ public class ExtractOverDriveInfo {
 	private long overDriveAPIExpiration;
 	private String overDriveProductsKey;
 	private String extractType;
+	private long delayBeforeRetryingAPICall;
 	
 	private HashSet<String> removeableIDs = new HashSet<String>(); 
 	private HashSet<JSONObject> jsonHS = new HashSet<JSONObject>();
@@ -92,6 +93,7 @@ public class ExtractOverDriveInfo {
 		clientKey = configIni.get("OverDrive", "clientKey");
 		accountId = configIni.get("OverDrive", "accountId");
 		overDriveProductsKey = configIni.get("OverDrive", "productsKey");
+		delayBeforeRetryingAPICall = Long.parseLong(configIni.get("OverDrive", "delayBeforeRetryingAPICall"));
 		
 		if (overDriveProductsKey == null){
 			logger.warn("Warning no products key provided for OverDrive");
@@ -156,7 +158,7 @@ public class ExtractOverDriveInfo {
 	        tempContentMap.put("externalId", externalDataInfoObj.getExternalId());	
 
 	        JSONObject sourceMetaData = externalDataInfoObj.getSourceMetaData();
-	        jsonString = sourceMetaData.toString();
+	        jsonString = (sourceMetaData != null) ? sourceMetaData.toString() : null;
 	        if( jsonString != null ) {
 	            // remove trailing spaces that break our parsing
 	            jsonString = jsonString.replace("\\\\\"", "\"");
@@ -509,7 +511,7 @@ public class ExtractOverDriveInfo {
 		Long libraryId = getLibraryIdForOverDriveAccount(libraryName);
 		//numProducts = 300;
 		
-		logger.info(libraryName + " collection has " + numProducts + " products in it.  The libraryId for the collection is " + libraryId);
+		logger.info(libraryName + " collection has " + numProducts + " products in it.  The libraryId for this collection is " + libraryId);
 	
 		long batchSize = 300;
 		
@@ -864,7 +866,7 @@ public class ExtractOverDriveInfo {
 	 * @return JSONObject
 	 */
 	private JSONObject callOverDriveURL(String overdriveUrl) {
-		int maxConnectTries = 1; //OverDrive states that calling multiple times won't improve responses, but will take longer
+		int maxConnectTries = 3; //OverDrive states that calling multiple times won't improve responses, but will take longer
 		logger.debug("Calling overdrive URL " + overdriveUrl);
 		for (int connectTry = 0 ; connectTry < maxConnectTries; connectTry++){
 			if (connectToOverDriveAPI(connectTry != 0)){
@@ -923,7 +925,8 @@ public class ExtractOverDriveInfo {
 			}
 			//Something went wrong, try to wait 2 minutes to see if the OverDrive API will catch up.
 			try {
-				Thread.sleep(120000);
+				logger.debug("Taking a nap before retrying");
+				Thread.sleep(delayBeforeRetryingAPICall);
 			} catch (InterruptedException e) {
 				logger.debug("Could not pause between tries " + connectTry);
 			}
