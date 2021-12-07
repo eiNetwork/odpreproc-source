@@ -661,12 +661,15 @@ public class ExtractOverDriveInfo {
 			// add it to the list we're requesting
 			if( idIterator.hasNext() ) {
 				String overdriveId = idIterator.next();
+				//logger.debug("ID pulled from Overdrive is: " + overdriveId);
 				idsToGrab.add(overdriveId);
 			}
 			
 			// we've got a full list (or these are the last remaining ones), so request them
 			if( idsToGrab.size() >= 20 || !idIterator.hasNext() ) {
+				
 				externalDataMap.clear();
+				//processOverdriveIds(idsToGrab);
 				processBulkMetaData(idsToGrab);
 				processBulkAvailability(idsToGrab);
 				//setAvailabilityFromOverdrive(mainProductUrl);
@@ -736,10 +739,34 @@ public class ExtractOverDriveInfo {
 	 * Extract bulk metadata (up to 20 items by id) from overdrive api and add to corresponding externalDataInfo item in hashmap
 	 * @param idsToGrab
 	 */
+	private void processOverdriveIds(ArrayList<String> idsToGrab) {
+		String productMetaDataUrl = "http://api.overdrive.com/v1/collections/" + overDriveProductsKey + "/bulkmetadata?reserveIds";
+		for(int i=0; i<20 && i<idsToGrab.size(); i++) {
+			productMetaDataUrl += ((i==0) ? "=" : ",") + idsToGrab.get(i);
+			//logger.debug("processOverdriveIds productMetadataUrl is now : " + productMetaDataUrl);
+		}
+		
+		//ExternalDataInfo externalDataInfoObj;
+		try {
+			JSONObject results = callOverDriveURL(productMetaDataUrl);
+			JSONArray metaDataArray = (results == null) ? null : results.getJSONArray("metadata");
+			for(int i=0; (metaDataArray != null) && i<metaDataArray.length(); i++) {
+				JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
+				String overdriveId = productMetaDataInfo.getString("id");
+				logger.debug("Proccessing : " + overdriveId);
+				overdriveId = overdriveId.toUpperCase();
+				idsToGrab.remove(overdriveId);
+			}
+		} catch (JSONException e) {
+			logger.error("ERROR: setting External Data -- " + e );
+		}
+	}
+	
 	private void processBulkMetaData(ArrayList<String> idsToGrab) {
 		String productMetaDataUrl = "http://api.overdrive.com/v1/collections/" + overDriveProductsKey + "/bulkmetadata?reserveIds";
 		for(int i=0; i<20 && i<idsToGrab.size(); i++) {
 			productMetaDataUrl += ((i==0) ? "=" : ",") + idsToGrab.get(i);
+			//logger.debug("processBulkMetaData's productMetaDataUrl is now : " + productMetaDataUrl);
 		}
 		
 		ExternalDataInfo externalDataInfoObj;
@@ -751,7 +778,10 @@ public class ExtractOverDriveInfo {
 			for(int i=0; (metaDataArray != null) && i<metaDataArray.length(); i++) {
 				JSONObject productMetaDataInfo = metaDataArray.getJSONObject(i);
 				String overdriveId = productMetaDataInfo.getString("id");
+				//force uppercase so the IDs match (they are case sensitive) - prevents infinite loop
+				overdriveId = overdriveId.toUpperCase();
 				//idsToGrab.remove(overdriveId);
+				logger.debug(i + " Extacting Metadata for : " + overdriveId);
 				
 				if(externalDataMap.containsKey(overdriveId)){
 					externalDataInfoObj = externalDataMap.get(overdriveId);
@@ -765,11 +795,13 @@ public class ExtractOverDriveInfo {
 				externalDataInfoObj.setIndexedMetaData(null);
 				
 				externalDataInfoObj.setExternalId(overdriveId);
+				
 				Long date = new Date().getTime();
-				externalDataInfoObj.setLastMetaDataCheck( date);
+				externalDataInfoObj.setLastMetaDataCheck(date);
 				externalDataInfoObj.setLastMetaDataChange(date);
 				
-				externalDataMap.put( overdriveId,  externalDataInfoObj);
+				externalDataMap.put(overdriveId, externalDataInfoObj);
+				//logger.debug("LastMetaDataCheck is now : " + externalDataInfoObj.getLastMetaDataCheck());
 			}
 		} catch (JSONException e) {
 			logger.error("ERROR: setting External Data -- " + e );
@@ -783,6 +815,11 @@ public class ExtractOverDriveInfo {
 		String productAvailabilityUrl = "https://api.overdrive.com/v2/collections/" + overDriveProductsKey + "/availability?products";
 		for(int i=0; i<20 && i<idsToGrab.size(); i++) {
 			productAvailabilityUrl += ((i==0) ? "=" : ",") + idsToGrab.get(i);
+			//logger.debug("processBulkAvailability's URL is now : " + productAvailabilityUrl);
+		}
+		//make sure the idstograb is cleared out even if we don't get availability
+		for(int i=0; i<20 && i<idsToGrab.size(); i++) {
+			idsToGrab.remove(i);
 		}
 		
 		ExternalDataInfo externalDataInfoObj;
@@ -794,7 +831,9 @@ public class ExtractOverDriveInfo {
 			for(int i=0; (availabilityArray != null) && i<availabilityArray.length(); i++) {
 				JSONObject productAvailabilityInfo = availabilityArray.getJSONObject(i);
 				String overdriveId = productAvailabilityInfo.getString("reserveId");
-				idsToGrab.remove(overdriveId);
+				//force uppercase so the IDs match (case sensitive) - prevents infinite loop
+				overdriveId = overdriveId.toUpperCase();
+				//idsToGrab.remove(overdriveId);
 				
 				if(externalDataMap.containsKey(overdriveId)){
 					externalDataInfoObj = externalDataMap.get(overdriveId);
@@ -811,12 +850,14 @@ public class ExtractOverDriveInfo {
 					logger.error("ERROR: setting External Data -- " + e );
 				}
 			
-				Long date = new Date().getTime();
+				Date todaysDate = new Date();
+				Long date = todaysDate.getTime();
 				externalDataInfoObj.setExternalId(overdriveId);
 				externalDataInfoObj.setLastAvailabilityCheck(date);
 				externalDataInfoObj.setLastAvailabilityChange(date);
 			
-				externalDataMap.put( overdriveId,  externalDataInfoObj);
+				externalDataMap.put(overdriveId, externalDataInfoObj);
+				//logger.debug("LastAvailabilityChange is now : " + externalDataInfoObj.getLastAvailabilityChange());
 			}
 		} catch (JSONException e) {
 			logger.error("ERROR: setting External Data -- " + e );
