@@ -833,7 +833,8 @@ public class ExtractOverDriveInfo {
 				String overdriveId = productAvailabilityInfo.getString("reserveId");
 				//force uppercase so the IDs match (case sensitive) - prevents infinite loop
 				overdriveId = overdriveId.toUpperCase();
-				//idsToGrab.remove(overdriveId);
+				//Remove ID if there is availability - prevents duplicate records in externalMetaData table
+				idsToGrab.remove(overdriveId);
 				
 				if(externalDataMap.containsKey(overdriveId)){
 					externalDataInfoObj = externalDataMap.get(overdriveId);
